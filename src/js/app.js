@@ -17,18 +17,18 @@ function hideMobileMenu() {
     menuAriaToggle();
 }
 
-menuToggle.addEventListener('pointerdown', () => {
+menuToggle.addEventListener('click', () => {
     mobileMenu.classList.remove('hidden');
     overlay.classList.remove('hidden');
     menuAriaToggle();
 
 });
 
-menuClose.addEventListener('pointerdown', () => {
+menuClose.addEventListener('click', () => {
     hideMobileMenu();
 });
 
-overlay.addEventListener('pointerdown', (event) => {
+overlay.addEventListener('click', (event) => {
     hideMobileMenu();
 });
 

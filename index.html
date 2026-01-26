@@ -9,7 +9,7 @@
 </head>
 
 <body class="bg-bg text-text">
-	<nav class="w-full sticky top-0 z-50 bg-nav/20 backdrop-blur-sm">
+	<nav class="w-full sticky top-0 z-30 bg-nav/20 backdrop-blur-sm">
 		<div class="hidden md:grid container-main py-4 grid-cols-[1fr_2fr_1fr] items-center">
 			<div
 				class="justify-self-start size-14 bg-accent-light rounded-full flex items-center justify-center hover:shadow-hover hover:scale-105 transition duration-300 ease-out">
@@ -34,7 +34,7 @@
 				Contattami
 			</a>
 		</div>
-		<div class="flex mgit d:hidden items-center justify-between px-6 py-4">
+		<div class="flex md:hidden items-center justify-between px-6 py-4">
 			<div
 				class="justify-self-start size-14 bg-accent-light rounded-full flex items-center justify-center hover:shadow-hover hover:scale-105 transition duration-300 ease-out">
 				<a href="#home"
@@ -49,6 +49,7 @@
 			</button>
 		</div>
 	</nav>
+	<div id="overlay" class="hidden fixed top-0 left-0 h-dvh w-[40%] z-40"></div>
 	<div id="mobile-menu" class="hidden md:hidden fixed top-0 right-0 z-40 w-[60%] h-dvh bg-accent pl-4 pb-4">
 		<div
 			class="h-full flex flex-col p-8 gap-8 border-l-[1.5px] border-b-[1.5px] border-logo border-dashed rounded-bl-xl">

@@ -207,6 +207,15 @@
   .right-0 {
     right: calc(var(--spacing) * 0);
   }
+  .left-0 {
+    left: calc(var(--spacing) * 0);
+  }
+  .z-0 {
+    z-index: 0;
+  }
+  .z-30 {
+    z-index: 30;
+  }
   .z-40 {
     z-index: 40;
   }
@@ -255,6 +264,12 @@
   }
   .w-100 {
     width: calc(var(--spacing) * 100);
+  }
+  .w-\[40\%\] {
+    width: 40%;
+  }
+  .w-\[40\] {
+    width: 40;
   }
   .w-\[60\%\] {
     width: 60%;
@@ -377,12 +392,6 @@
   .bg-bg-dark {
     background-color: var(--color-bg-dark);
   }
-  .bg-bg\/80 {
-    background-color: color-mix(in srgb, #FAFAF8 80%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-bg) 80%, transparent);
-    }
-  }
   .bg-nav {
     background-color: var(--color-nav);
   }
@@ -390,12 +399,6 @@
     background-color: color-mix(in srgb, #FAFAF8 20%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-nav) 20%, transparent);
-    }
-  }
-  .bg-nav\/80 {
-    background-color: color-mix(in srgb, #FAFAF8 80%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-nav) 80%, transparent);
     }
   }
   .p-8 {
@@ -516,11 +519,6 @@
   .outline {
     outline-style: var(--tw-outline-style);
     outline-width: 1px;
-  }
-  .backdrop-blur-md {
-    --tw-backdrop-blur: blur(var(--blur-md));
-    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
-    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
   }
   .backdrop-blur-sm {
     --tw-backdrop-blur: blur(var(--blur-sm));

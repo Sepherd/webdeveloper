@@ -3,6 +3,7 @@
 const menuToggle = document.getElementById('menu-toggle');
 const menuClose = document.getElementById('menu-close');
 const mobileMenu = document.getElementById('mobile-menu');
+const overlay = document.getElementById('overlay');
 
 function menuAriaToggle() {
     const isExpanded = menuClose.getAttribute('aria-expanded') === 'true';
@@ -10,13 +11,29 @@ function menuAriaToggle() {
     menuToggle.setAttribute('aria-expanded', !isExpanded);
 }
 
+function hideMobileMenu() {
+    mobileMenu.classList.add('hidden');
+    overlay.classList.add('hidden');
+    menuAriaToggle();
+}
+
 menuToggle.addEventListener('click', () => {
     mobileMenu.classList.remove('hidden');
+    overlay.classList.remove('hidden');
     menuAriaToggle();
 
 });
 
 menuClose.addEventListener('click', () => {
-    mobileMenu.classList.add('hidden');
-    menuAriaToggle();
+    hideMobileMenu();
+});
+
+overlay.addEventListener('click', (event) => {
+    hideMobileMenu();
+});
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+        hideMobileMenu();
+    }
 });

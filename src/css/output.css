@@ -274,6 +274,9 @@
   .h-screen {
     height: 100vh;
   }
+  .min-h-dvh {
+    min-height: 100dvh;
+  }
   .min-h-screen {
     min-height: 100vh;
   }

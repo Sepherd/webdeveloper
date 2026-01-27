@@ -9,158 +9,156 @@
 </head>
 
 <body class="bg-bg text-text">
-	<div class="flex flex-col h-screen">
-		<nav class="w-full bg-bg">
-			<div class="hidden md:grid container-main py-4 grid-cols-[1fr_2fr_1fr] items-center">
-				<div
-					class="justify-self-start size-14 bg-accent-light rounded-full flex items-center justify-center hover:shadow-hover hover:scale-105 transition duration-300 ease-out">
-					<a href="#home"
-						class="size-12 border-[1.5px] border-logo border-dashed rounded-full flex items-center justify-center">
-						<svg class="size-7 text-logo">
-							<use href="./src/svg/icons.svg#logo"></use>
-						</svg>
-					</a>
-				</div>
-				<div class="justify-self-center">
-					<ul
-						class="text-text-light flex justify-center space-x-8 font-medium [&>li>a:hover]:text-accent [&>li>a]:transition [&>li>a]:duration-300">
-						<li><a href="#servizi">Servizi</a></li>
-						<li><a href="#processo">Processo</a></li>
-						<li><a href="#progetti">Progetti</a></li>
-						<li><a href="#chi-sono">Chi Sono</a></li>
-					</ul>
-				</div>
-				<a href="#progetti"
-					class="justify-self-end bg-accent-light cursor-pointer px-4 py-2 border-full text-white hover:bg-accent hover:shadow-hover transition duration-300 ease-out">
-					Contattami
+	<nav class="w-full sticky top-0 z-30 bg-nav/20 backdrop-blur-sm">
+		<div class="hidden md:grid container-main py-4 grid-cols-[1fr_2fr_1fr] items-center">
+			<div
+				class="justify-self-start size-14 bg-accent-light rounded-full flex items-center justify-center hover:shadow-hover hover:scale-105 transition duration-300 ease-out">
+				<a href="#home"
+					class="size-12 border-[1.5px] border-logo border-dashed rounded-full flex items-center justify-center">
+					<svg class="size-7 text-logo">
+						<use href="./src/svg/icons.svg#logo"></use>
+					</svg>
 				</a>
 			</div>
-			<div class="flex md:hidden items-center justify-between px-6 py-4">
-				<div
-					class="justify-self-start size-14 bg-accent-light rounded-full flex items-center justify-center hover:shadow-hover hover:scale-105 transition duration-300 ease-out">
-					<a href="#home"
-						class="size-12 border-[1.5px] border-logo border-dashed rounded-full flex items-center justify-center">
-						<svg class="size-7 text-logo">
-							<use href="./src/svg/icons.svg#logo"></use>
-						</svg>
-					</a>
-				</div>
-				<button id="menu-toggle" aria-label="Open Menu" class="text-3xl" aria-expanded="false"
-					aria-controls="mobile-menu">
-					☰
-				</button>
-			</div>
-		</nav>
-		<div id="overlay" class="hidden fixed top-0 left-0 h-dvh w-[40%] z-40"></div>
-		<div id="mobile-menu" class="hidden md:hidden fixed top-0 right-0 z-40 w-[60%] h-dvh bg-accent pl-4 pb-4">
-			<div
-				class="h-full flex flex-col p-8 gap-8 border-l-[1.5px] border-b-[1.5px] border-logo border-dashed rounded-bl-xl">
-				<button id="menu-close" class="text-3xl text-logo self-end" aria-label="Close Menu"
-					aria-expanded="false" aria-controls="mobile-menu">
-					✕
-				</button>
+			<div class="justify-self-center">
 				<ul
-					class="text-logo flex flex-col justify-center text-lg gap-6 font-medium [&>li>a:hover]:text-accent [&>li>a]:transition [&>li>a]:duration-300">
+					class="text-text-light flex justify-center space-x-8 font-medium [&>li>a:hover]:text-accent [&>li>a]:transition [&>li>a]:duration-300">
 					<li><a href="#servizi">Servizi</a></li>
 					<li><a href="#processo">Processo</a></li>
 					<li><a href="#progetti">Progetti</a></li>
 					<li><a href="#chi-sono">Chi Sono</a></li>
 				</ul>
-				<a href="#progetti"
-					class=" bg-bg cursor-pointer px-5 py-2.5 text-center border-full text-text-light hover:bg-bg-dark hover:shadow-hover transition duration-300 ease-out">
-					Contattami
+			</div>
+			<a href="#progetti"
+				class="justify-self-end bg-accent-light cursor-pointer px-4 py-2 border-full text-white hover:bg-accent hover:shadow-hover transition duration-300 ease-out">
+				Contattami
+			</a>
+		</div>
+		<div class="flex md:hidden items-center justify-between px-6 py-4">
+			<div
+				class="justify-self-start size-14 bg-accent-light rounded-full flex items-center justify-center hover:shadow-hover hover:scale-105 transition duration-300 ease-out">
+				<a href="#home"
+					class="size-12 border-[1.5px] border-logo border-dashed rounded-full flex items-center justify-center">
+					<svg class="size-7 text-logo">
+						<use href="./src/svg/icons.svg#logo"></use>
+					</svg>
 				</a>
 			</div>
+			<button id="menu-toggle" aria-label="Open Menu" class="text-3xl" aria-expanded="false"
+				aria-controls="mobile-menu">
+				☰
+			</button>
 		</div>
-		<main class="flex-1 overflow-y-scroll">
-			<section id="home" class="min-h-full flex items-start pt-12 md:pt-0 md:items-center">
-				<div class="container-main flex flex-col gap-6 items-center justify-center text-center">
-					<div
-						class="bg-bg-dark border border-border text-xs md:text-sm p-2 md:px-4 md:py-2 rounded-full flex items-center gap-2 animate-fade-in hover:[&>span]:scale-110">
-						<span class="size-1.5 md:size-2 rounded-full bg-accent opacity-70 animate-[pulse_3s_ease-in-out_infinite] shadow-soft  transition"></span>
-						Disponibile per nuovi progetti
-					</div>
-					<h1 class="text-5xl md:text-7xl tracking-tight leading-[1.1]">
-						Siti Web Curati<br />
-						<span class="text-accent">Dettaglio per Dettaglio</span>
-					</h1>
-					<div>
-						<svg class="hidden md:block w-100" height="24" viewBox="0 0 400 24" fill="none">
-							<path d="M2 12 C 35 10, 70 14, 105 12 C 140 10, 175 14, 389 12" stroke="#B7C4BC"
-								stroke-width="1.5" stroke-dasharray="6 5" stroke-linecap="round" />
-							<circle cx="396" cy="13" r="3.5" fill="#B7C4BC" />
-						</svg>
-						<svg class="md:hidden w-60" height="24" viewBox="0 0 240 24" fill="none">
-							<path d="M2 12 C 35 10, 70 14, 105 12 C 140 10, 175 14, 229 12" stroke="#B7C4BC"
-								stroke-width="1.5" stroke-dasharray="6 5" stroke-linecap="round" />
-							<circle cx="236" cy="13" r="3.5" fill="#B7C4BC" />
-						</svg>
-					</div>
-					<p class="max-w-2xl text-lg text-text-light leading-relaxed">
-						Esperienze digitali semplici, pensate per le persone.<br />
-						<span
-							class="italic underline decoration-dashed decoration-accent-light decoration-2 underline-offset-4">
-							Cucite</span> su misura per ogni schermo.
-					</p>
-					<div class="mt-8 flex flex-col sm:flex-row gap-4 sm:gap-6 items-center">
-						<a href="#contatti"
-							class="cursor-pointer px-6 py-3 text-lg border-primary text-accent font-semibold transition hover:border-accent-hover hover:text-accent-hover hover:translate-y-[-1px] hover:shadow-hover duration-300 ease-out">
-							Inizia un progetto
-						</a>
-						<a href="#progetti"
-							class="bg-accent-light cursor-pointer px-4 py-2 border-full text-white hover:bg-accent hover:shadow-hover transition duration-300 ease-out">
-							Vedi i miei Lavori
-						</a>
-					</div>
-				</div>
-			</section>
-			<section id="servizi" class="min-h-full bg-bg-dark flex items-start pt-12 md:pt-0 md:items-center">
+	</nav>
+	<div id="overlay" class="hidden fixed top-0 left-0 h-dvh w-[40%] z-40"></div>
+	<div id="mobile-menu" class="hidden md:hidden fixed top-0 right-0 z-40 w-[60%] h-dvh bg-accent pl-4 pb-4">
+		<div
+			class="h-full flex flex-col p-8 gap-8 border-l-[1.5px] border-b-[1.5px] border-logo border-dashed rounded-bl-xl">
+			<button id="menu-close" class="text-3xl text-logo self-end" aria-label="Close Menu" aria-expanded="false"
+				aria-controls="mobile-menu">
+				✕
+			</button>
+			<ul
+				class="text-logo flex flex-col justify-center text-lg gap-6 font-medium [&>li>a:hover]:text-accent [&>li>a]:transition [&>li>a]:duration-300">
+				<li><a href="#servizi">Servizi</a></li>
+				<li><a href="#processo">Processo</a></li>
+				<li><a href="#progetti">Progetti</a></li>
+				<li><a href="#chi-sono">Chi Sono</a></li>
+			</ul>
+			<a href="#progetti"
+				class=" bg-bg cursor-pointer px-5 py-2.5 text-center border-full text-text-light hover:bg-bg-dark hover:shadow-hover transition duration-300 ease-out">
+				Contattami
+			</a>
+		</div>
+	</div>
+	<main>
+		<section id="home" class="scroll-mt-24">
+			<div
+				class="container-main min-h-screen py-14 md:py-8 flex flex-col gap-6 items-center justify-start text-center">
 				<div
-					class="container-main flex flex-col md:flex-row gap-12 md:gap-8 justify-center items-center">
-					<div class="text-center md:text-left md:px-8">
-						<h2 class="text-4xl md:text-5xl tracking-tight text-accent">
-							I Miei Servizi
-						</h2>
-						<p class="mt-4 text-text-lighter">
-							Soluzioni progettate con cura per ogni esigenza digitale.
+					class="bg-bg-dark border border-border text-sm px-4 py-2 rounded-full flex items-center gap-2 animate-fade-in hover:[&>span]:scale-110">
+					<span
+						class="size-2 rounded-full bg-accent opacity-70 animate-[pulse_3s_ease-in-out_infinite] shadow-soft  transition"></span>
+					Disponibile per nuovi progetti
+				</div>
+				<h1 class="text-5xl md:text-7xl tracking-tight leading-[1.1]">
+					Siti Web Curati<br />
+					<span class="text-accent">Dettaglio per Dettaglio</span>
+				</h1>
+				<div>
+					<svg class="hidden md:block w-100" height="24" viewBox="0 0 400 24" fill="none">
+						<path d="M2 12 C 35 10, 70 14, 105 12 C 140 10, 175 14, 389 12" stroke="#B7C4BC"
+							stroke-width="1.5" stroke-dasharray="6 5" stroke-linecap="round" />
+						<circle cx="396" cy="13" r="3.5" fill="#B7C4BC" />
+					</svg>
+					<svg class="md:hidden w-60" height="24" viewBox="0 0 240 24" fill="none">
+						<path d="M2 12 C 35 10, 70 14, 105 12 C 140 10, 175 14, 229 12" stroke="#B7C4BC"
+							stroke-width="1.5" stroke-dasharray="6 5" stroke-linecap="round" />
+						<circle cx="236" cy="13" r="3.5" fill="#B7C4BC" />
+					</svg>
+				</div>
+				<p class="max-w-2xl text-lg text-text-light leading-relaxed">
+					Esperienze digitali semplici, pensate per le persone.<br />
+					<span
+						class="italic underline decoration-dashed decoration-accent-light decoration-2 underline-offset-4">
+						Cucite</span> su misura per ogni schermo.
+				</p>
+				<div class="mt-8 flex flex-col sm:flex-row gap-4 sm:gap-6 items-center">
+					<a href="#contatti"
+						class="cursor-pointer px-6 py-3 text-lg border-primary text-accent font-semibold transition hover:border-accent-hover hover:text-accent-hover hover:translate-y-[-1px] hover:shadow-hover duration-300 ease-out">
+						Inizia un progetto
+					</a>
+					<a href="#progetti"
+						class="bg-accent-light cursor-pointer px-4 py-2 border-full text-white hover:bg-accent hover:shadow-hover transition duration-300 ease-out">
+						Vedi i miei Lavori
+					</a>
+				</div>
+			</div>
+		</section>
+		<section id="servizi">
+			<div class="container-main min-h-screen bg-bg-dark pt-24 md:pt-0 flex flex-col md:flex-row gap-12 md:gap-8 justify-start md:justify-center items-center">
+				<div class="text-center md:text-left md:px-8">
+					<h2 class="text-4xl md:text-5xl tracking-tight text-accent">
+						I Miei Servizi
+					</h2>
+					<p class="mt-4 text-text-lighter">
+						Soluzioni progettate con cura per ogni esigenza digitale.
+					</p>
+				</div>
+				<div class="flex flex-col gap-8 md:gap-12 px-8">
+					<div>
+						<h3
+							class="text-2xl font-semibold underline decoration-accent-light decoration-dashed decoration-2 underline-offset-4	">
+							<span class="text-accent">01</span> Siti Web
+						</h3>
+						<p class="mt-2 text-text-lighter">
+							Siti web progettati con attenzione al contenuto, al design e all’esperienza utente.
 						</p>
 					</div>
-					<div class="flex flex-col gap-8 md:gap-12 px-8">
-						<div>
-							<h3
-								class="text-2xl font-semibold underline decoration-accent-light decoration-dashed decoration-2 underline-offset-4	">
-								<span class="text-accent">01</span> Siti Web
-							</h3>
-							<p class="mt-2 text-text-lighter">
-								Siti web progettati con attenzione al contenuto, al design e all’esperienza utente.
-							</p>
-						</div>
-						<div>
-							<h3
-								class="text-2xl font-semibold underline decoration-accent-light decoration-dashed decoration-2 underline-offset-4	">
-								<span class="text-accent">02</span> Soluzioni su Misura
-							</h3>
-							<p class="mt-2 text-text-lighter">
-								Progetti personalizzati partendo dagli obiettivi reali, adattando struttura,
-								funzionalità e
-								design al contesto.
-							</p>
-						</div>
-						<div>
-							<h3
-								class="text-2xl font-semibold underline decoration-accent-light decoration-dashed decoration-2 underline-offset-4	">
-								<span class="text-accent">03</span> Manutenzione & Ottimizzazione
-							</h3>
-							<p class="mt-2 text-text-light">
-								Servizi di manutenzione e ottimizzazione per garantire che il tuo sito web rimanga
-								performante e aggiornato nel tempo.
-							</p>
-						</div>
+					<div>
+						<h3
+							class="text-2xl font-semibold underline decoration-accent-light decoration-dashed decoration-2 underline-offset-4	">
+							<span class="text-accent">02</span> Soluzioni su Misura
+						</h3>
+						<p class="mt-2 text-text-lighter">
+							Progetti personalizzati partendo dagli obiettivi reali, adattando struttura, funzionalità e
+							design al contesto.
+						</p>
+					</div>
+					<div>
+						<h3
+							class="text-2xl font-semibold underline decoration-accent-light decoration-dashed decoration-2 underline-offset-4	">
+							<span class="text-accent">03</span> Manutenzione & Ottimizzazione
+						</h3>
+						<p class="mt-2 text-text-light">
+							Servizi di manutenzione e ottimizzazione per garantire che il tuo sito web rimanga
+							performante e aggiornato nel tempo.
+						</p>
 					</div>
 				</div>
-			</section>
-		</main>
-	</div>
+			</div>
+		</section>
+	</main>
 	<script src="./src/js/app.js"></script>
 </body>
 

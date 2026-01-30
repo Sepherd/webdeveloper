@@ -5,42 +5,56 @@ const menuClose = document.getElementById('menu-close');
 const mobileMenu = document.getElementById('mobile-menu');
 const overlay = document.getElementById('overlay');
 const navLinks = mobileMenu.querySelectorAll('a');
+const nav = document.querySelector('nav');
+const logo = document.getElementById('logo');
 
-function menuAriaToggle() {
-    const isExpanded = menuClose.getAttribute('aria-expanded') === 'true';
-    menuClose.setAttribute('aria-expanded', !isExpanded);
-    menuToggle.setAttribute('aria-expanded', !isExpanded);
+function openMenu() {
+    mobileMenu.classList.remove('translate-x-full');
+    overlay.classList.remove('opacity-0', 'pointer-events-none');
+    menuToggle.setAttribute('aria-expanded', 'true');
+    menuClose.setAttribute('aria-expanded', 'true');
+    nav.classList.remove('bg-nav/20', 'backdrop-blur-sm');
+    document.body.classList.add('overflow-hidden');
 }
 
-function hideMobileMenu() {
-    mobileMenu.classList.add('hidden');
-    overlay.classList.add('hidden');
-    menuAriaToggle();
+function closeMenu() {
+    mobileMenu.classList.add('translate-x-full');
+    overlay.classList.add('opacity-0', 'pointer-events-none');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuClose.setAttribute('aria-expanded', 'false');
+    nav.classList.add('bg-nav/20', 'backdrop-blur-sm');
+    document.body.classList.remove('overflow-hidden');
 }
 
-menuToggle.addEventListener('click', () => {
-    mobileMenu.classList.remove('hidden');
-    overlay.classList.remove('hidden');
-    menuAriaToggle();
-
+menuToggle.addEventListener('click', openMenu);
+menuClose.addEventListener('click', closeMenu);
+overlay.addEventListener('click', closeMenu);
+logo.addEventListener('click', closeMenu);
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu();
+});
+navLinks.forEach(link => {
+    link.addEventListener('click', closeMenu);
 });
 
-menuClose.addEventListener('click', () => {
-    hideMobileMenu();
+let startX = 0;
+let currentX = 0;
+
+mobileMenu.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
 });
 
-overlay.addEventListener('click', (event) => {
-    hideMobileMenu();
+mobileMenu.addEventListener('touchmove', e => {
+    currentX = e.touches[0].clientX;
 });
 
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
-        hideMobileMenu();
+mobileMenu.addEventListener('touchend', () => {
+    if (startX - currentX > 50) {
+        closeMenu();
     }
 });
 
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        hideMobileMenu();
-    });
-});
+// Set Current Year in Footer
+const yearSpan = document.getElementById('year');
+const currentYear = new Date().getFullYear();
+if (yearSpan) yearSpan.textContent = currentYear;

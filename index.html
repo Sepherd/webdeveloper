@@ -9,7 +9,7 @@
 </head>
 
 <body class="bg-bg text-text">
-	<nav class="w-full sticky top-0 z-30 bg-nav/20 backdrop-blur-sm">
+	<nav class="w-full sticky top-0 z-40 bg-nav/20 backdrop-blur-sm">
 		<div class="hidden md:grid container-main py-4 grid-cols-[1fr_2fr_1fr] items-center">
 			<div
 				class="justify-self-start size-14 bg-accent-light rounded-full flex items-center justify-center hover:shadow-hover hover:scale-105 transition duration-300 ease-out">
@@ -29,7 +29,7 @@
 					<li><a href="#chi-sono">Chi Sono</a></li>
 				</ul>
 			</div>
-			<a href="#progetti"
+			<a href="#contatti"
 				class="justify-self-end bg-accent-light cursor-pointer px-4 py-2 border-full text-white hover:bg-accent hover:shadow-hover transition duration-300 ease-out">
 				Parliamo del tuo progetto
 			</a>
@@ -37,7 +37,7 @@
 		<div class="flex md:hidden items-center justify-between px-6 py-4">
 			<div
 				class="justify-self-start size-14 bg-accent-light rounded-full flex items-center justify-center hover:shadow-hover hover:scale-105 transition duration-300 ease-out">
-				<a href="#home"
+				<a id="logo" href="#home"
 					class="size-12 border-[1.5px] border-logo border-dashed rounded-full flex items-center justify-center">
 					<svg class="size-7 text-logo">
 						<use href="./src/svg/icons.svg#logo"></use>
@@ -50,31 +50,31 @@
 			</button>
 		</div>
 	</nav>
-	<div id="overlay" class="hidden fixed top-0 left-0 h-dvh w-[40%] z-40"></div>
-	<div id="mobile-menu" class="hidden md:hidden fixed top-0 right-0 z-40 w-[60%] h-dvh bg-accent pl-4 pb-4">
+	<div id="overlay"
+		class="fixed top-0 left-0 opacity-0 pointer-events-none bg-black/20 backdrop-blur-sm h-dvh w-full z-30"></div>
+	<div id="mobile-menu"
+		class="md:hidden fixed top-0 right-0 z-50 w-[65%] h-dvh bg-accent pl-4 pb-4 translate-x-full transition-transform duration-300 ease-[cubic-bezier(.25,.8,.25,1)]">
 		<div
 			class="h-full flex flex-col p-8 gap-8 border-l-[1.5px] border-b-[1.5px] border-logo border-dashed rounded-bl-xl">
 			<button id="menu-close" class="text-3xl text-logo self-end" aria-label="Close Menu" aria-expanded="false"
 				aria-controls="mobile-menu">
 				✕
 			</button>
-			<ul
-				class="text-logo flex flex-col justify-center text-lg gap-6 font-medium">
+			<ul class="text-logo flex flex-col justify-center text-lg gap-6 font-medium">
 				<li><a href="#servizi">Servizi</a></li>
 				<li><a href="#come-lavoro">Come Lavoro</a></li>
 				<li><a href="#progetti">Progetti</a></li>
 				<li><a href="#chi-sono">Chi Sono</a></li>
 			</ul>
 			<a href="#contatti"
-				class=" bg-bg cursor-pointer px-3 py-2 text-sm text-center border-full text-text-light hover:bg-bg-dark hover:shadow-hover transition duration-300 ease-out">
+				class=" bg-bg cursor-pointer px-3 py-2 text-center border-full text-text-light hover:bg-bg-dark hover:shadow-hover transition duration-300 ease-[cubic-bezier(.25,.8,.25,1)]">
 				Contatti
 			</a>
 		</div>
 	</div>
 	<main>
 		<section id="home" class="scroll-mt-24">
-			<div
-				class="container-main min-h-dvh py-14 md:py-8 flex flex-col gap-6 items-center justify-start text-center">
+			<div class="container-main min-h-dvh flex flex-col gap-6 items-center justify-start text-center">
 				<div
 					class="bg-bg-dark border border-border text-sm px-4 py-2 rounded-full flex items-center gap-2 animate-fade-in hover:[&>span]:scale-110">
 					<span
@@ -117,7 +117,7 @@
 		</section>
 		<section id="servizi">
 			<div
-				class="container-main min-h-dvh bg-bg-dark pt-24 md:pt-0 pb-8 flex flex-col md:flex-row gap-12 md:gap-8 justify-start md:justify-center items-center">
+				class="container-main bg-bg-dark py-32 flex flex-col md:flex-row gap-12 md:gap-8 justify-start md:justify-center items-center">
 				<div class="text-center md:text-left md:px-8">
 					<h2 class="text-4xl md:text-5xl tracking-tight text-accent">
 						I Miei Servizi
@@ -162,7 +162,7 @@
 		</section>
 		<section id="come-lavoro">
 			<div
-				class="container-main min-h-dvh bg-bg-dark pt-24 md:pt-0 pb-8 flex flex-col md:flex-row-reverse gap-12 md:gap-8 justify-start md:justify-center items-center">
+				class="container-main bg-bg-dark py-32 flex flex-col md:flex-row-reverse gap-12 md:gap-8 justify-start md:justify-center items-center">
 				<div class="text-center md:text-right md:px-8">
 					<h2 class="text-4xl md:text-5xl tracking-tight text-accent">
 						Come Lavoro
@@ -219,8 +219,7 @@
 			</div>
 		</section>
 		<section id="progetti">
-			<div
-				class="container-main min-h-dvh bg-bg pt-24 md:pt-14 pb-8 flex flex-col gap-8 justify-start md:justify-center items-center">
+			<div class="container-main bg-bg py-32 flex flex-col gap-8 justify-start md:justify-center items-center">
 				<div class="text-center md:px-8">
 					<h2 class="text-4xl md:text-5xl tracking-tight text-accent">
 						I Miei Progetti
@@ -245,7 +244,7 @@
 							Applicazione per la gestione di attività quotidiane,
 							pensata per essere veloce, minimale e accessibile.
 						</p>
-						<a
+						<a href="https://sepherd.github.io/todo" target="_blank" rel="noopener noreferrer"
 							class="mt-4 cursor-pointer group inline-flex items-center gap-2 text-accent font-medium hover:text-accent-hover transition duration-300 ease-out">
 							Vai al progetto
 							<svg class="size-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24">
@@ -284,7 +283,7 @@
 		</section>
 		<section id="chi-sono">
 			<div
-				class="container-main min-h-dvh bg-bg-dark pt-24 md:pt-0 pb-8 flex flex-col md:flex-row gap-12 md:gap-8 justify-start md:justify-center items-center">
+				class="container-main bg-bg-dark py-32 flex flex-col md:flex-row gap-12 md:gap-8 justify-start md:justify-center items-center">
 				<div class="flex flex-col items-center md:items-start md:px-8 text-center md:text-left">
 					<h2 class="text-4xl md:text-5xl tracking-tight text-accent">
 						Chi Sono
@@ -307,8 +306,7 @@
 			</div>
 		</section>
 		<section id="contatti">
-			<div
-				class="container-main min-h-dvh pt-24 md:pt-14 pb-8 flex flex-col gap-8 items-center justify-start md:justify-center">
+			<div class="container-main bg-bg py-32 flex flex-col gap-8 items-center justify-start md:justify-center">
 				<div class="flex flex-col gap-4 items-center justify-center text-center">
 					<h2 class="text-4xl md:text-5xl tracking-tight text-accent">
 						Parliamo del tuo progetto
@@ -338,18 +336,17 @@
 				<p class="text-text-lighter text-sm">Rispondo solitamente entro 24 ore.</p>
 			</div>
 		</section>
-		<footer class="bg-bg-dark pt-3">
-			<div
-				class="container-main p-4 text-text-lighter text-sm border-t-2 border-accent-light border-dashed">
-				<p class="text-text-light text-xs text-center leading-relaxed">
-					&copy; 2026 - Andrea Recce - Sviluppatore Web<br />
-					Siti Web Curati, Dettaglio per Dettaglio.<br />
-					Partita IVA: 01234567890
-				</p>
-			</div>
-		</footer>
 	</main>
-	<script src=" ./src/js/app.js"></script>
+	<footer class="bg-bg-dark pt-3">
+		<div class="container-main p-4 text-text-lighter text-sm border-t-2 border-accent-light border-dashed">
+			<p class="text-text-light text-xs text-center leading-relaxed">
+				&copy; <span id="year"></span> - Andrea Recce - Sviluppatore Web<br />
+				Siti Web Curati, Dettaglio per Dettaglio.<br />
+				Partita IVA: 01234567890
+			</p>
+		</div>
+	</footer>
+	<script src="./src/js/app.js"></script>
 </body>
 
 </html>

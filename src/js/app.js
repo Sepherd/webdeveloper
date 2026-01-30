@@ -4,6 +4,7 @@ const menuToggle = document.getElementById('menu-toggle');
 const menuClose = document.getElementById('menu-close');
 const mobileMenu = document.getElementById('mobile-menu');
 const overlay = document.getElementById('overlay');
+const navLinks = mobileMenu.querySelectorAll('a');
 
 function menuAriaToggle() {
     const isExpanded = menuClose.getAttribute('aria-expanded') === 'true';
@@ -36,4 +37,10 @@ document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
         hideMobileMenu();
     }
+});
+
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        hideMobileMenu();
+    });
 });

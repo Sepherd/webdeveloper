@@ -912,6 +912,11 @@
       transition-duration: 300ms;
     }
   }
+  .\[\&\>li\>a\:active\]\:text-logo {
+    &>li>a:active {
+      color: var(--color-logo);
+    }
+  }
   .\[\&\>li\>a\:hover\]\:text-accent {
     &>li>a:hover {
       color: var(--color-accent);

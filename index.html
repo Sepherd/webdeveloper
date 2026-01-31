@@ -9,7 +9,11 @@
 </head>
 
 <body class="bg-bg text-text">
-	<nav class="w-full sticky top-0 z-40 bg-nav/20 backdrop-blur-sm">
+	<a href="#main"
+		class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 bg-bg px-4 py-2 rounded">
+		Salta al contenuto
+	</a>
+	<nav class="w-full sticky top-0 z-40 bg-nav/20 backdrop-blur-sm" aria-label="Navigazione principale">
 		<div class="hidden md:grid container-main py-4 grid-cols-[1fr_2fr_1fr] items-center">
 			<div
 				class="justify-self-start size-14 bg-accent-light rounded-full flex items-center justify-center hover:shadow-hover hover:scale-105 transition duration-300 ease-out">
@@ -51,12 +55,14 @@
 		</div>
 	</nav>
 	<div id="overlay"
-		class="fixed top-0 left-0 opacity-0 pointer-events-none bg-black/20 backdrop-blur-sm h-dvh w-full z-30"></div>
-	<div id="mobile-menu"
+		class="fixed top-0 left-0 opacity-0 pointer-events-none bg-black/20 backdrop-blur-sm h-dvh w-full z-30"
+		aria-hidden="true"></div>
+	<div id="mobile-menu" role="dialog" aria-modal="true " aria-labelledby="menu-title"
 		class="md:hidden fixed top-0 right-0 z-50 w-[65%] h-dvh bg-accent pl-4 pb-4 translate-x-full transition-transform duration-300 ease-[cubic-bezier(.25,.8,.25,1)]">
+		<h2 id="menu-title" class="sr-only">Menu principale</h2>
 		<div
 			class="h-full flex flex-col p-8 gap-8 border-l-[1.5px] border-b-[1.5px] border-logo border-dashed rounded-bl-xl">
-			<button id="menu-close" class="text-3xl text-logo self-end" aria-label="Close Menu" aria-expanded="false"
+			<button id="menu-close" class="text-3xl text-logo self-end" aria-label="Close Menu"
 				aria-controls="mobile-menu">
 				✕
 			</button>
@@ -72,7 +78,7 @@
 			</a>
 		</div>
 	</div>
-	<main>
+	<main id="main">
 		<section id="home" class="scroll-mt-24">
 			<div class="container-main min-h-dvh flex flex-col gap-6 items-center justify-start text-center">
 				<div
@@ -86,12 +92,14 @@
 					<span class="text-accent">Dettaglio per Dettaglio</span>
 				</h1>
 				<div>
-					<svg class="hidden md:block w-100" height="24" viewBox="0 0 400 24" fill="none">
+					<svg class="hidden md:block w-100" height="24" viewBox="0 0 400 24" fill="none" aria-hidden="true"
+						focusable="false">
 						<path d="M2 12 C 35 10, 70 14, 105 12 C 140 10, 175 14, 389 12" stroke="#B7C4BC"
 							stroke-width="1.5" stroke-dasharray="6 5" stroke-linecap="round" />
 						<circle cx="396" cy="13" r="3.5" fill="#B7C4BC" />
 					</svg>
-					<svg class="md:hidden w-60" height="24" viewBox="0 0 240 24" fill="none">
+					<svg class="md:hidden w-60" height="24" viewBox="0 0 240 24" fill="none" aria-hidden="true"
+						focusable="false">
 						<path d="M2 12 C 35 10, 70 14, 105 12 C 140 10, 175 14, 229 12" stroke="#B7C4BC"
 							stroke-width="1.5" stroke-dasharray="6 5" stroke-linecap="round" />
 						<circle cx="236" cy="13" r="3.5" fill="#B7C4BC" />
@@ -115,11 +123,11 @@
 				</div>
 			</div>
 		</section>
-		<section id="servizi">
+		<section id="servizi" aria-labelledby="servizi-title">
 			<div
 				class="container-main bg-bg-dark py-32 flex flex-col md:flex-row gap-12 md:gap-8 justify-start md:justify-center items-center">
 				<div class="text-center md:text-left md:px-8">
-					<h2 class="text-4xl md:text-5xl tracking-tight text-accent">
+					<h2 id="servizi-title" class="text-4xl md:text-5xl tracking-tight text-accent">
 						I Miei Servizi
 					</h2>
 					<p class="mt-4 text-text-lighter">
@@ -160,11 +168,11 @@
 				</div>
 			</div>
 		</section>
-		<section id="come-lavoro">
+		<section id="come-lavoro" aria-labelledby="come-lavoro-title">
 			<div
 				class="container-main bg-bg-dark py-32 flex flex-col md:flex-row-reverse gap-12 md:gap-8 justify-start md:justify-center items-center">
 				<div class="text-center md:text-right md:px-8">
-					<h2 class="text-4xl md:text-5xl tracking-tight text-accent">
+					<h2 id="come-lavoro-title" class="text-4xl md:text-5xl tracking-tight text-accent">
 						Come Lavoro
 					</h2>
 					<p class="mt-4 text-text-lighter max-w-xs md:max-w-md">
@@ -218,10 +226,10 @@
 				</div>
 			</div>
 		</section>
-		<section id="progetti">
+		<section id="progetti" aria-labelledby="progetti-title">
 			<div class="container-main bg-bg py-32 flex flex-col gap-8 justify-start md:justify-center items-center">
 				<div class="text-center md:px-8">
-					<h2 class="text-4xl md:text-5xl tracking-tight text-accent">
+					<h2 id="progetti-title" class="text-4xl md:text-5xl tracking-tight text-accent">
 						I Miei Progetti
 					</h2>
 					<p class="mt-4 text-text-light">
@@ -229,7 +237,7 @@
 					</p>
 				</div>
 				<div class="flex flex-col gap-8">
-					<div
+					<article
 						class="flex flex-col gap-4 md:gap-8 max-w-xl items-start py-4 px-6 border-l-2 border-accent border-dashed">
 						<h3
 							class="text-2xl font-semibold underline decoration-accent-light decoration-dashed decoration-2 underline-offset-6">
@@ -252,8 +260,8 @@
 									stroke-linecap="round" stroke-linejoin="round" />
 							</svg>
 						</a>
-					</div>
-					<div
+					</article>
+					<article
 						class="flex flex-col gap-4 md:gap-8 max-w-xl items-end py-4 px-6 border-r-2 border-accent border-dashed">
 						<h3
 							class="text-2xl font-semibold underline decoration-accent-light decoration-dashed decoration-2 underline-offset-6">
@@ -277,15 +285,15 @@
 									stroke-linecap="round" stroke-linejoin="round" />
 							</svg>
 						</a>
-					</div>
+					</article>
 				</div>
 			</div>
 		</section>
-		<section id="chi-sono">
+		<section id="chi-sono" aria-labelledby="chi-sono-title">
 			<div
 				class="container-main bg-bg-dark py-32 flex flex-col md:flex-row gap-12 md:gap-8 justify-start md:justify-center items-center">
 				<div class="flex flex-col items-center md:items-start md:px-8 text-center md:text-left">
-					<h2 class="text-4xl md:text-5xl tracking-tight text-accent">
+					<h2 id="chi-sono-title" class="text-4xl md:text-5xl tracking-tight text-accent">
 						Chi Sono
 					</h2>
 					<h3 class="text-text-light">Sviluppatore Web</h3>
@@ -305,10 +313,10 @@
 				</div>
 			</div>
 		</section>
-		<section id="contatti">
+		<section id="contatti" aria-labelledby="contatti-title">
 			<div class="container-main bg-bg py-32 flex flex-col gap-8 items-center justify-start md:justify-center">
 				<div class="flex flex-col gap-4 items-center justify-center text-center">
-					<h2 class="text-4xl md:text-5xl tracking-tight text-accent">
+					<h2 id="contatti-title" class="text-4xl md:text-5xl tracking-tight text-accent">
 						Parliamo del tuo progetto
 					</h2>
 					<p class="text-text-light tracking-wide">

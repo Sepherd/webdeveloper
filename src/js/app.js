@@ -11,8 +11,8 @@ const logo = document.getElementById('logo');
 function openMenu() {
     mobileMenu.classList.remove('translate-x-full');
     overlay.classList.remove('opacity-0', 'pointer-events-none');
+    overlay.setAttribute('aria-hidden', 'false');
     menuToggle.setAttribute('aria-expanded', 'true');
-    menuClose.setAttribute('aria-expanded', 'true');
     nav.classList.remove('bg-nav/20', 'backdrop-blur-sm');
     document.body.classList.add('overflow-hidden');
     activeFocus();
@@ -21,8 +21,8 @@ function openMenu() {
 function closeMenu() {
     mobileMenu.classList.add('translate-x-full');
     overlay.classList.add('opacity-0', 'pointer-events-none');
+    overlay.setAttribute('aria-hidden', 'true');
     menuToggle.setAttribute('aria-expanded', 'false');
-    menuClose.setAttribute('aria-expanded', 'false');
     nav.classList.add('bg-nav/20', 'backdrop-blur-sm');
     document.body.classList.remove('overflow-hidden');
     deactiveFocus();

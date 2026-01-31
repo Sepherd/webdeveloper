@@ -49,17 +49,18 @@
     html {
         font-family: 'Satoshi', system-ui, -apple-system, sans-serif;
     }
+    :focus-visible {
+        @apply outline-dashed outline-2 outline-accent outline-offset-4;
+    }
 }
 
 @layer components {
     .container-main {
         @apply w-full px-6 lg:px-10;
     }
-
     .border-primary {
         @apply border-2 border-dashed border-accent rounded-tr-xl rounded-bl-xl rounded-tl-md rounded-br-md;
     }
-
     .border-full {
         @apply rounded-xl md:rounded-2xl;
     }

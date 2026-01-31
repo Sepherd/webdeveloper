@@ -219,14 +219,8 @@
   .top-0 {
     top: calc(var(--spacing) * 0);
   }
-  .-right-\[65\%\] {
-    right: calc(65% * -1);
-  }
   .right-0 {
     right: calc(var(--spacing) * 0);
-  }
-  .right-\[65\%\] {
-    right: 65%;
   }
   .left-0 {
     left: calc(var(--spacing) * 0);
@@ -260,9 +254,6 @@
   }
   .inline-flex {
     display: inline-flex;
-  }
-  .table {
-    display: table;
   }
   .size-2 {
     width: calc(var(--spacing) * 2);
@@ -321,14 +312,8 @@
   .max-w-xs {
     max-width: var(--container-xs);
   }
-  .flex-shrink {
-    flex-shrink: 1;
-  }
   .shrink-0 {
     flex-shrink: 0;
-  }
-  .border-collapse {
-    border-collapse: collapse;
   }
   .translate-x-full {
     --tw-translate-x: 100%;
@@ -339,9 +324,6 @@
   }
   .cursor-pointer {
     cursor: pointer;
-  }
-  .resize {
-    resize: both;
   }
   .scroll-mt-24 {
     scroll-margin-top: calc(var(--spacing) * 24);
@@ -475,17 +457,11 @@
   .bg-bg-dark {
     background-color: var(--color-bg-dark);
   }
-  .bg-black {
-    background-color: var(--color-black);
-  }
   .bg-black\/20 {
     background-color: color-mix(in srgb, #000 20%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-black) 20%, transparent);
     }
-  }
-  .bg-nav {
-    background-color: var(--color-nav);
   }
   .bg-nav\/20 {
     background-color: color-mix(in srgb, #FAFAF8 20%, transparent);
@@ -648,26 +624,13 @@
     --tw-shadow: 0 2px 6px var(--tw-shadow-color, rgba(183, 196, 188, 0.25));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
-  .outline {
-    outline-style: var(--tw-outline-style);
-    outline-width: 1px;
-  }
   .backdrop-blur-sm {
     --tw-backdrop-blur: blur(var(--blur-sm));
     -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
     backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
   }
-  .backdrop-filter {
-    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
-    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
-  }
   .transition {
     transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;
-    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
-    transition-duration: var(--tw-duration, var(--default-transition-duration));
-  }
-  .transition-all {
-    transition-property: all;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
@@ -683,10 +646,6 @@
   .ease-\[cubic-bezier\(\.25\,\.8\,\.25\,1\)\] {
     --tw-ease: cubic-bezier(.25,.8,.25,1);
     transition-timing-function: cubic-bezier(.25,.8,.25,1);
-  }
-  .ease-in-out {
-    --tw-ease: var(--ease-in-out);
-    transition-timing-function: var(--ease-in-out);
   }
   .ease-out {
     --tw-ease: var(--ease-out);
@@ -1069,11 +1028,6 @@ h1 span {
   inherits: false;
   initial-value: 0 0 #0000;
 }
-@property --tw-outline-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
-}
 @property --tw-backdrop-blur {
   syntax: "*";
   inherits: false;
@@ -1163,7 +1117,6 @@ h1 span {
       --tw-ring-offset-width: 0px;
       --tw-ring-offset-color: #fff;
       --tw-ring-offset-shadow: 0 0 #0000;
-      --tw-outline-style: solid;
       --tw-backdrop-blur: initial;
       --tw-backdrop-brightness: initial;
       --tw-backdrop-contrast: initial;

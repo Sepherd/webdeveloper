@@ -15,6 +15,7 @@ function openMenu() {
     menuClose.setAttribute('aria-expanded', 'true');
     nav.classList.remove('bg-nav/20', 'backdrop-blur-sm');
     document.body.classList.add('overflow-hidden');
+    activeFocus();
 }
 
 function closeMenu() {
@@ -24,6 +25,7 @@ function closeMenu() {
     menuClose.setAttribute('aria-expanded', 'false');
     nav.classList.add('bg-nav/20', 'backdrop-blur-sm');
     document.body.classList.remove('overflow-hidden');
+    deactiveFocus();
 }
 
 menuToggle.addEventListener('click', openMenu);
@@ -37,6 +39,41 @@ navLinks.forEach(link => {
     link.addEventListener('click', closeMenu);
 });
 
+// Mobile Menu Focus
+const focusableSelectors = 'a, button';
+let firstEl = null;
+let lastEl = null;
+
+function trapFocus(e) {
+    if (e.key !== 'Tab') return;
+    if (e.shiftKey) {
+        if (document.activeElement === firstEl) {
+            e.preventDefault();
+            lastEl.focus();
+        }
+    } else {
+        if (document.activeElement === lastEl) {
+            e.preventDefault();
+            firstEl.focus();
+        }
+    }
+}
+
+function activeFocus() {
+    const focusableEl = mobileMenu.querySelectorAll(focusableSelectors);
+    if (!focusableEl.length) return;
+    firstEl = focusableEl[0];
+    lastEl = focusableEl[focusableEl.length - 1];
+    mobileMenu.addEventListener('keydown', trapFocus);
+    firstEl.focus();
+}
+
+function deactiveFocus() {
+    mobileMenu.removeEventListener('keydown', trapFocus);
+    menuToggle.focus();
+}
+
+// Swipe Gesture for Mobile Menu
 let startX = 0;
 let currentX = 0;
 
@@ -49,8 +86,10 @@ mobileMenu.addEventListener('touchmove', e => {
 });
 
 mobileMenu.addEventListener('touchend', () => {
-    if (startX - currentX > 50) {
+    if (startX + currentX > 50) {
         closeMenu();
+    } else if (startX - currentX > 50) {
+        openMenu();
     }
 });
 

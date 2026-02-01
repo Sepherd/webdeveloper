@@ -10,7 +10,8 @@
 
 <body class="bg-bg text-text">
 	<a href="#main"
-		class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 bg-bg px-4 py-2 rounded" aria-label="Torna alla home">
+		class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 bg-bg px-4 py-2 rounded"
+		aria-label="Torna alla home">
 		Salta al contenuto
 	</a>
 	<nav class="w-full fixed top-0 z-40 bg-nav/20 backdrop-blur-sm" aria-label="Navigazione principale">
@@ -42,7 +43,8 @@
 			<div
 				class="justify-self-start size-14 bg-accent-light rounded-full flex items-center justify-center hover:shadow-hover hover:scale-105 transition duration-300 ease-[cubic-bezier(.25,.8,.25,1)]">
 				<a id="logo" href="#home"
-					class="size-12 border-[1.5px] border-logo border-dashed rounded-full flex items-center justify-center" aria-label="Torna alla home">
+					class="size-12 border-[1.5px] border-logo border-dashed rounded-full flex items-center justify-center"
+					aria-label="Torna alla home">
 					<svg class="size-7 text-logo">
 						<use href="./src/svg/icons.svg#logo"></use>
 					</svg>
@@ -320,10 +322,11 @@
 						Parliamo del tuo progetto
 					</h2>
 					<p class="text-text-light tracking-wide">
-						Scrivimi senza impegno: raccontami il tuo progetto e iniziamo a costruirlo insieme, dettaglio dopo dettaglio.
+						Scrivimi senza impegno: raccontami il tuo progetto e iniziamo a costruirlo insieme, dettaglio
+						dopo dettaglio.
 					</p>
 				</div>
-				<div class="flex flex-col md:flex-row gap-4 items-center justify-center">
+				<div class="flex flex-col md:flex-row md:flex-wrap gap-4 items-center justify-center">
 					<a href="mailto:dev@dev.dev"
 						class="inline-flex items-center gap-2 px-6 py-3 text-lg border-primary text-accent font-semibold transition hover:border-accent-hover hover:text-accent-hover hover:translate-y-[-1px] hover:shadow-hover cta-active duration-300 ease-[cubic-bezier(.25,.8,.25,1)]"
 						aria-label="Scrivimi una mail">
@@ -332,7 +335,7 @@
 							<use href="./src/svg/icons.svg#email"></use>
 						</svg>
 					</a>
-					<a href="https://wa.me/393512345678" target="_blank"
+					<a href="https://wa.me/393512345678" target="_blank" rel="noopener noreferrer"
 						class="bg-accent-light inline-flex items-center gap-2 cursor-pointer px-4 py-2.5 border-full text-white hover:bg-accent hover:shadow-hover transition duration-300 ease-[cubic-bezier(.25,.8,.25,1)]"
 						aria-label="Scrivimi su WhatsApp">
 						Scrivimi su WhatsApp
@@ -340,8 +343,8 @@
 							<use href="./src/svg/icons.svg#wa"></use>
 						</svg>
 					</a>
+					<p class="text-text-lighter text-sm md:w-full text-center">Rispondo solitamente entro 24 ore.</p>
 				</div>
-				<p class="text-text-lighter text-sm">Rispondo solitamente entro 24 ore.</p>
 			</div>
 		</section>
 	</main>

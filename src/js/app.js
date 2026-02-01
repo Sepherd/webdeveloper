@@ -39,6 +39,18 @@ navLinks.forEach(link => {
     link.addEventListener('click', closeMenu);
 });
 
+//Window Resize - Close Mobile Menu
+const mobileBreakpoint = 768;
+let isMobile = window.innerWidth < mobileBreakpoint;
+
+window.addEventListener('resize', () => {
+    const nowMobile = window.innerWidth < mobileBreakpoint;
+    if (isMobile && !nowMobile) {
+        closeMenu();
+    }
+    isMobile = nowMobile;
+});
+
 // Mobile Menu Focus
 const focusableSelectors = 'a, button';
 let firstEl = null;

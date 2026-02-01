@@ -10,13 +10,13 @@
 
 <body class="bg-bg text-text">
 	<a href="#main"
-		class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 bg-bg px-4 py-2 rounded">
+		class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 bg-bg px-4 py-2 rounded" aria-label="Torna alla home">
 		Salta al contenuto
 	</a>
-	<nav class="w-full sticky top-0 z-40 bg-nav/20 backdrop-blur-sm" aria-label="Navigazione principale">
+	<nav class="w-full fixed top-0 z-40 bg-nav/20 backdrop-blur-sm" aria-label="Navigazione principale">
 		<div class="hidden md:grid container-main py-4 grid-cols-[1fr_2fr_1fr] items-center">
 			<div
-				class="justify-self-start size-14 bg-accent-light rounded-full flex items-center justify-center hover:shadow-hover hover:scale-105 transition duration-300 ease-out">
+				class="justify-self-start size-14 bg-accent-light rounded-full flex items-center justify-center hover:shadow-hover hover:scale-105 transition duration-300 ease-[cubic-bezier(.25,.8,.25,1)]">
 				<a href="#home"
 					class="size-12 border-[1.5px] border-logo border-dashed rounded-full flex items-center justify-center">
 					<svg class="size-7 text-logo">
@@ -34,15 +34,15 @@
 				</ul>
 			</div>
 			<a href="#contatti"
-				class="justify-self-end bg-accent-light cursor-pointer px-4 py-2 border-full text-white hover:bg-accent hover:shadow-hover transition duration-300 ease-out">
+				class="justify-self-end bg-accent-light cursor-pointer px-4 py-2 border-full text-white hover:bg-accent hover:shadow-hover transition duration-300 ease-[cubic-bezier(.25,.8,.25,1)]">
 				Parliamo del tuo progetto
 			</a>
 		</div>
 		<div class="flex md:hidden items-center justify-between px-6 py-4">
 			<div
-				class="justify-self-start size-14 bg-accent-light rounded-full flex items-center justify-center hover:shadow-hover hover:scale-105 transition duration-300 ease-out">
+				class="justify-self-start size-14 bg-accent-light rounded-full flex items-center justify-center hover:shadow-hover hover:scale-105 transition duration-300 ease-[cubic-bezier(.25,.8,.25,1)]">
 				<a id="logo" href="#home"
-					class="size-12 border-[1.5px] border-logo border-dashed rounded-full flex items-center justify-center">
+					class="size-12 border-[1.5px] border-logo border-dashed rounded-full flex items-center justify-center" aria-label="Torna alla home">
 					<svg class="size-7 text-logo">
 						<use href="./src/svg/icons.svg#logo"></use>
 					</svg>
@@ -57,7 +57,7 @@
 	<div id="overlay"
 		class="fixed top-0 left-0 opacity-0 pointer-events-none bg-black/20 backdrop-blur-sm h-dvh w-full z-30"
 		aria-hidden="true"></div>
-	<div id="mobile-menu" role="dialog" aria-modal="true " aria-labelledby="menu-title"
+	<div id="mobile-menu" role="dialog" aria-modal="true" aria-labelledby="menu-title"
 		class="md:hidden fixed top-0 right-0 z-50 w-[65%] h-dvh bg-accent pl-4 pb-4 translate-x-full transition-transform duration-300 ease-[cubic-bezier(.25,.8,.25,1)]">
 		<h2 id="menu-title" class="sr-only">Menu principale</h2>
 		<div
@@ -73,14 +73,14 @@
 				<li><a href="#chi-sono">Chi Sono</a></li>
 			</ul>
 			<a href="#contatti"
-				class=" bg-bg cursor-pointer px-3 py-2 text-center border-full text-text-light hover:bg-bg-dark hover:shadow-hover transition duration-300 ease-[cubic-bezier(.25,.8,.25,1)]">
+				class=" bg-bg cursor-pointer px-3 py-2 text-center border-full text-text-light hover:bg-bg-dark hover:shadow-hover button-active transition duration-300 ease-[cubic-bezier(.25,.8,.25,1)]">
 				Contatti
 			</a>
 		</div>
 	</div>
 	<main id="main">
-		<section id="home" class="scroll-mt-24">
-			<div class="container-main min-h-dvh flex flex-col gap-6 items-center justify-start text-center">
+		<section id="home">
+			<div class="container-main flex min-h-dvh flex-col gap-6 items-center justify-center text-center">
 				<div
 					class="bg-bg-dark border border-border text-sm px-4 py-2 rounded-full flex items-center gap-2 animate-fade-in hover:[&>span]:scale-110">
 					<span
@@ -113,11 +113,11 @@
 				</p>
 				<div class="mt-8 flex flex-col sm:flex-row gap-4 sm:gap-6 items-center">
 					<a href="#contatti"
-						class="cursor-pointer px-6 py-3 text-lg border-primary text-accent font-semibold transition hover:border-accent-hover hover:text-accent-hover hover:translate-y-[-1px] hover:shadow-hover duration-300 ease-out">
+						class="cursor-pointer px-6 py-3 text-lg border-primary text-accent font-semibold transition hover:border-accent-hover hover:text-accent-hover hover:translate-y-[-1px] hover:shadow-hover cta-active duration-300 ease-[cubic-bezier(.25,.8,.25,1)]">
 						Parliamo del tuo progetto
 					</a>
 					<a href="#progetti"
-						class="bg-accent-light cursor-pointer px-4 py-2 border-full text-white hover:bg-accent hover:shadow-hover transition duration-300 ease-out">
+						class="bg-accent-light cursor-pointer px-4 py-2 border-full text-white hover:bg-accent hover:shadow-hover button-active transition duration-300 ease-[cubic-bezier(.25,.8,.25,1)]">
 						Vedi i miei Progetti
 					</a>
 				</div>
@@ -253,7 +253,7 @@
 							pensata per essere veloce, minimale e accessibile.
 						</p>
 						<a href="https://sepherd.github.io/todo" target="_blank" rel="noopener noreferrer"
-							class="mt-4 cursor-pointer group inline-flex items-center gap-2 text-accent font-medium hover:text-accent-hover transition duration-300 ease-out">
+							class="mt-4 cursor-pointer group inline-flex items-center gap-2 text-accent font-medium hover:text-accent-hover transition duration-300 ease-[cubic-bezier(.25,.8,.25,1)]">
 							Vai al progetto
 							<svg class="size-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24">
 								<path d="M5 12h14M13 5l6 7-6 7" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -278,7 +278,7 @@
 							pensata per essere veloce, minimale e accessibile.
 						</p>
 						<a
-							class="mt-4 cursor-pointer group inline-flex items-center gap-2 text-accent font-medium hover:text-accent-hover transition duration-300 ease-out">
+							class="mt-4 cursor-pointer group inline-flex items-center gap-2 text-accent font-medium hover:text-accent-hover transition duration-300 ease-[cubic-bezier(.25,.8,.25,1)]">
 							Vai al progetto
 							<svg class="size-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24">
 								<path d="M5 12h14M13 5l6 7-6 7" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -299,7 +299,7 @@
 					<h3 class="text-text-light">Sviluppatore Web</h3>
 				</div>
 				<div
-					class="mt-4 text-center md:text-left md:px-8 md:py-4 md:border-l-2 border-accent-light border-dashed">
+					class="mt-4 md:mt-0 text-center md:text-left md:px-8 md:py-4 md:border-l-2 border-accent-light border-dashed">
 					<h3 class="text-2xl md:text-3xl text-accent mb-4 md:mb-6">Ciao, sono Andrea</h3>
 					<p class="text-text-lighter max-w-xs md:max-w-md leading-relaxed">
 						Mi occupo di sviluppo web e realizzo siti per piccole attività e professionisti che vogliono una
@@ -314,18 +314,18 @@
 			</div>
 		</section>
 		<section id="contatti" aria-labelledby="contatti-title">
-			<div class="container-main bg-bg py-32 flex flex-col gap-8 items-center justify-start md:justify-center">
-				<div class="flex flex-col gap-4 items-center justify-center text-center">
+			<div class="container-main bg-bg py-32 flex flex-col gap-12 items-center justify-start md:justify-center">
+				<div class="flex flex-col gap-6 items-center justify-center text-center">
 					<h2 id="contatti-title" class="text-4xl md:text-5xl tracking-tight text-accent">
 						Parliamo del tuo progetto
 					</h2>
 					<p class="text-text-light tracking-wide">
-						Scrivimi senza impegno: raccontami cosa hai in mente e vediamo se posso aiutarti.
+						Scrivimi senza impegno: raccontami il tuo progetto e iniziamo a costruirlo insieme, dettaglio dopo dettaglio.
 					</p>
 				</div>
 				<div class="flex flex-col md:flex-row gap-4 items-center justify-center">
 					<a href="mailto:dev@dev.dev"
-						class="inline-flex items-center gap-2 px-6 py-3 text-lg border-primary text-accent font-semibold transition hover:border-accent-hover hover:text-accent-hover hover:translate-y-[-1px] hover:shadow-hover duration-300 ease-out"
+						class="inline-flex items-center gap-2 px-6 py-3 text-lg border-primary text-accent font-semibold transition hover:border-accent-hover hover:text-accent-hover hover:translate-y-[-1px] hover:shadow-hover cta-active duration-300 ease-[cubic-bezier(.25,.8,.25,1)]"
 						aria-label="Scrivimi una mail">
 						Scrivimi una email
 						<svg class="size-5 shrink-0">
@@ -333,7 +333,7 @@
 						</svg>
 					</a>
 					<a href="https://wa.me/393512345678" target="_blank"
-						class="bg-accent-light inline-flex items-center gap-2 cursor-pointer px-4 py-2.5 border-full text-white hover:bg-accent hover:shadow-hover transition duration-300 ease-out"
+						class="bg-accent-light inline-flex items-center gap-2 cursor-pointer px-4 py-2.5 border-full text-white hover:bg-accent hover:shadow-hover transition duration-300 ease-[cubic-bezier(.25,.8,.25,1)]"
 						aria-label="Scrivimi su WhatsApp">
 						Scrivimi su WhatsApp
 						<svg class="size-5 shrink-0">

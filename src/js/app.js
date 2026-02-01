@@ -86,9 +86,10 @@ mobileMenu.addEventListener('touchmove', e => {
 });
 
 mobileMenu.addEventListener('touchend', () => {
-    if (startX + currentX > 50) {
+    const deltaX = currentX - startX;
+    if (deltaX > 50) {
         closeMenu();
-    } else if (startX - currentX > 50) {
+    } else if (deltaX < -50) {
         openMenu();
     }
 });

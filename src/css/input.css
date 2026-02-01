@@ -64,6 +64,12 @@
     .border-full {
         @apply rounded-xl md:rounded-2xl;
     }
+    .cta-active {
+        @apply active:translate-y-[1px] active:shadow-none;
+    }
+    .button-active {
+        @apply active:shadow-none active:translate-y-0.5;
+    }
 }
 
 h1,

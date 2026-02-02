@@ -118,6 +118,7 @@ function smoothScroll(target) {
     const targetEl = document.getElementById(targetId);
     if (targetEl) {
         targetEl.scrollIntoView({ behavior: 'smooth' });
+        window.history.pushState(null, null, `#${targetId}`);
     }
 }
 anchorLinks.forEach(link => {

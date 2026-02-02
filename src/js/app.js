@@ -110,3 +110,19 @@ mobileMenu.addEventListener('touchend', () => {
 const yearSpan = document.getElementById('year');
 const currentYear = new Date().getFullYear();
 if (yearSpan) yearSpan.textContent = currentYear;
+
+// Smooth Scroll for Anchor Links
+const anchorLinks = document.querySelectorAll('a[href^="#"]');
+function smoothScroll(target) {
+    const targetId = target.getAttribute('href').substring(1);
+    const targetEl = document.getElementById(targetId);
+    if (targetEl) {
+        targetEl.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+anchorLinks.forEach(link => {
+    link.addEventListener('click', e => {
+        e.preventDefault();
+        smoothScroll(link);
+    });
+});

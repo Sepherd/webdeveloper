@@ -778,6 +778,11 @@
       z-index: 50;
     }
   }
+  .max-sm\:py-32 {
+    @media (width < 40rem) {
+      padding-block: calc(var(--spacing) * 32);
+    }
+  }
   .sm\:flex-row {
     @media (width >= 40rem) {
       flex-direction: row;

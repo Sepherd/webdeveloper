@@ -17,7 +17,6 @@ function openMenu() {
     document.body.classList.add('overflow-hidden');
     activeFocus();
 }
-
 function closeMenu() {
     mobileMenu.classList.add('translate-x-full');
     overlay.classList.add('opacity-0', 'pointer-events-none');
@@ -70,7 +69,6 @@ function trapFocus(e) {
         }
     }
 }
-
 function activeFocus() {
     const focusableEl = mobileMenu.querySelectorAll(focusableSelectors);
     if (!focusableEl.length) return;
@@ -79,7 +77,6 @@ function activeFocus() {
     mobileMenu.addEventListener('keydown', trapFocus);
     firstEl.focus();
 }
-
 function deactiveFocus() {
     mobileMenu.removeEventListener('keydown', trapFocus);
     menuToggle.focus();
@@ -92,11 +89,9 @@ let currentX = 0;
 mobileMenu.addEventListener('touchstart', e => {
     startX = e.touches[0].clientX;
 });
-
 mobileMenu.addEventListener('touchmove', e => {
     currentX = e.touches[0].clientX;
 });
-
 mobileMenu.addEventListener('touchend', () => {
     const deltaX = currentX - startX;
     if (deltaX > 50) {
@@ -113,6 +108,7 @@ if (yearSpan) yearSpan.textContent = currentYear;
 
 // Smooth Scroll for Anchor Links
 const anchorLinks = document.querySelectorAll('a[href^="#"]');
+
 function smoothScroll(target) {
     const targetId = target.getAttribute('href').substring(1);
     const targetEl = document.getElementById(targetId);

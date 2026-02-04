@@ -49,6 +49,7 @@
     html {
         font-family: 'Satoshi', system-ui, -apple-system, sans-serif;
     }
+
     :focus-visible {
         @apply outline-dashed outline-2 outline-accent outline-offset-4;
     }
@@ -58,19 +59,24 @@
     .container-main {
         @apply w-full px-6 lg:px-10;
     }
+
     .border-primary {
         @apply border-2 border-dashed border-accent rounded-tr-xl rounded-bl-xl rounded-tl-md rounded-br-md;
     }
+
     .border-full {
         @apply rounded-xl md:rounded-2xl;
     }
+
     .cta-active {
         @apply active:translate-y-[1px] active:shadow-none;
     }
+
     .button-active {
         @apply active:shadow-none active:translate-y-0.5;
     }
 }
+
 
 h1,
 h2 {
@@ -80,4 +86,25 @@ h2 {
 h1 span {
     font-family: 'DM Serif Display', serif;
     font-style: italic;
+}
+
+details summary {
+    list-style: none;
+}
+
+details {
+    @media (prefers-reduced-motion: no-preference) {
+        interpolate-size: allow-keywords;
+    }
+
+    &::details-content {
+        overflow: hidden;
+        block-size: 0;
+        transition: content-visibility 1s allow-discrete,
+            block-size 1s;
+    }
+
+    &[open]::details-content {
+        block-size: auto;
+    }
 }

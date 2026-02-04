@@ -123,3 +123,16 @@ anchorLinks.forEach(link => {
         smoothScroll(link);
     });
 });
+
+// FAQ Accordion Toggle
+const faqs = document.querySelectorAll('#faq details');
+
+faqs.forEach((detail) => {
+    detail.addEventListener('toggle', () => {
+        if (detail.open) {
+            document.querySelectorAll('#faq details').forEach((other) => {
+                if (other !== detail) other.removeAttribute('open');
+            });
+        }
+    });
+});

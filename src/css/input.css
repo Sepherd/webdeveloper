@@ -53,6 +53,10 @@
     :focus-visible {
         @apply outline-dashed outline-2 outline-accent outline-offset-4;
     }
+
+    summary:focus-visible {
+        @apply outline-dashed outline-2 outline-accent outline-offset-4;
+    }
 }
 
 @layer components {
@@ -88,6 +92,9 @@ h1 span {
     font-style: italic;
 }
 
+summary::-webkit-details-marker {
+    display: none;
+}
 details summary {
     list-style: none;
 }

@@ -136,3 +136,17 @@ faqs.forEach((detail) => {
         }
     });
 });
+
+// Select Input Customization
+const projectSelect = document.getElementById('tipo-progetto');
+if (projectSelect) {
+    projectSelect.addEventListener('change', function () {
+        if (this.value !== "") {
+            this.classList.remove('text-text-lighter');
+            this.classList.add('text-text');
+        } else {
+            this.classList.add('text-text-lighter');
+            this.classList.remove('text-text');
+        }
+    });
+}

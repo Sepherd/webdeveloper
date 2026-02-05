@@ -14,6 +14,7 @@
 	<meta property="og:url" content="https://tuodominio.it/" />
 	<meta property="og:image" content="https://tuodominio.it/og-image.jpg" />
 	<link rel="canonical" href="https://tuodominio.it/" />
+	<link rel="stylesheet" href="https://s.pageclip.co/v1/pageclip.css" media="screen">
 	<link href="./src/css/output.css" rel="stylesheet">
 	<title>Siti Web e Soluzioni Digitali su Misura | Andrea Recce</title>
 </head>
@@ -349,7 +350,7 @@
 								<use href="./src/svg/icons.svg#chevron"></use>
 							</svg>
 						</summary>
-						<p class="mt-2 text-text-lighter leading-relaxed">
+						<p class="cursor-pointer mt-2 text-text-lighter leading-relaxed">
 							Il costo dipende da dimensione, funzionalità e livello di personalizzazione.
 							Dopo un primo confronto posso fornire una stima chiara e trasparente, senza impegno.
 						</p>
@@ -439,7 +440,7 @@
 			</div>
 		</section>
 		<section id="contatti" aria-labelledby="contatti-title">
-			<div class="container-main bg-bg py-32 flex flex-col gap-12 items-center justify-start md:justify-center">
+			<div class="container-main bg-bg py-32 flex flex-col gap-8 items-center justify-start md:justify-center">
 				<div class="flex flex-col gap-6 items-center justify-center text-center">
 					<h2 id="contatti-title" class="text-4xl md:text-5xl tracking-tight text-accent">
 						Raccontami la tua idea
@@ -449,21 +450,80 @@
 						dopo dettaglio.
 					</p>
 				</div>
+				<div id="form-contact" class="w-full max-w-4xl">
+					<form action="https://send.pageclip.co/4UlRtxpQf2xCHlJ1Vy6ZAgDSoYa1bkst" class="pageclip-form"
+						method="post">
+						<div id="form-container"
+							class="bg-bg-dark grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-8 p-4 rounded">
+							<div class="flex flex-col gap-4" id="info">
+								<div class="flex flex-col gap-2">
+									<label for="nome" class="font-semibold text-text-light">Nome</label>
+									<input type="text" id="nome" name="nome" placeholder="Come ti chiami?" required
+										class="bg-bg border border-border text-text px-4 py-2 rounded focus:outline-none focus:border-accent transition" />
+								</div>
+								<div class="flex flex-col gap-2">
+									<label for="email" class="font-semibold text-text-light">Email</label>
+									<input type="email" id="email" name="email" placeholder="La tua email" required
+										class="bg-bg border border-border text-text px-4 py-2 rounded focus:outline-none focus:border-accent transition" />
+								</div>
+								<div class="flex flex-col gap-2">
+									<label for="tipo-progetto" class="font-semibold text-text-light">Tipo di
+										progetto</label>
+									<select name="tipo-progetto" id="tipo-progetto" name="tipo-progetto"
+										class="bg-bg border border-border text-text-lighter px-4 py-2 rounded focus:outline-none focus:border-accent cursor-pointer transition">
+										<option value="">Seleziona (facoltativo)</option>
+										<option>Nuovo sito web</option>
+										<option>Miglioramento sito esistente</option>
+										<option>Funzionalità personalizzate</option>
+										<option>Supporto / manutenzione</option>
+										<option>Altro</option>
+									</select>
+								</div>
+							</div>
+							<div id="messaggio-submit" class="flex flex-col items-start gap-4">
+								<div class="flex flex-col gap-2 w-full">
+									<label for="messaggio" class="font-semibold text-text-light">Messaggio</label>
+									<textarea id="messaggio" name="messaggio" rows="5" required
+										class="bg-bg border border-border text-text px-4 py-2 focus:outline-none focus:border-accent rounded"
+										placeholder="Raccontami il tuo progetto..."></textarea>
+								</div>
+								<div class="flex gap-2 items-center justify-end py-2 w-full">
+									<input type="checkbox" id="privacy" name="privacy" required class="accent-accent">
+									<label for="privacy" class="text-xs text-text-lighter leading-tight">
+										Ho letto e accetto la <a href="#" class="underline hover:text-accent">Privacy
+											Policy</a>.
+									</label>
+								</div>
+								<div class="flex items-center md:justify-end w-full">
+									<button type="submit"
+										class="bg-accent text-white font-semibold py-3 md:py-2 px-4 w-full md:max-w-1/2 rounded-xl hover:bg-accent-hover transition duration-300 shadow-soft">
+										Invia Messaggio
+									</button>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="flex flex-row flex-nowrap items-center justify-between w-full max-w-4xl px-4">
+					<hr class="border-t border-dashed border-accent w-1/2 mr-2 mt-1">
+					<span id="oppure" class="text-text-lighter text-sm">oppure</span>
+					<hr class="border-t border-dashed border-accent w-1/2 ml-2 mt-1">
+				</div>
 				<div class="flex flex-col md:flex-row md:flex-wrap gap-4 items-center justify-center">
-					<a href="mailto:dev@dev.dev"
-						class="inline-flex items-center gap-2 px-6 py-3 text-lg border-primary text-accent font-semibold transition hover:border-accent-hover hover:text-accent-hover hover:translate-y-[-1px] hover:shadow-hover cta-active 1000ation-300 ease-[cubic-bezier(.25,.8,.25,1)]"
-						aria-label="Contattami via email">
-						Contattami via email
-						<svg class="size-5 shrink-0">
-							<use href="./src/svg/icons.svg#email"></use>
-						</svg>
-					</a>
 					<a href="https://wa.me/393512345678" target="_blank" rel="noopener noreferrer"
-						class="bg-accent-light inline-flex items-center gap-2 cursor-pointer px-4 py-2.5 border-full text-white hover:bg-accent hover:shadow-hover transition duration-300 ease-[cubic-bezier(.25,.8,.25,1)]"
+						class="inline-flex items-center gap-2 px-6 py-3 text-lg border-primary text-accent font-semibold transition hover:border-accent-hover hover:text-accent-hover hover:translate-y-[-1px] hover:shadow-hover cta-active duration-300 ease-[cubic-bezier(.25,.8,.25,1)]"
 						aria-label="Contattami su WhatsApp">
 						Contattami su WhatsApp
 						<svg class="size-5 shrink-0">
 							<use href="./src/svg/icons.svg#wa"></use>
+						</svg>
+					</a>
+					<a href="mailto:dev@dev.dev"
+						class="bg-accent-light inline-flex items-center gap-2 cursor-pointer px-4 py-2.5 border-full text-white hover:bg-accent hover:shadow-hover transition duration-300 ease-[cubic-bezier(.25,.8,.25,1)]"
+						aria-label="Contattami via email">
+						Contattami via email
+						<svg class="size-5 shrink-0">
+							<use href="./src/svg/icons.svg#email"></use>
 						</svg>
 					</a>
 					<p class="text-text-lighter text-sm md:w-full text-center">Rispondo solitamente entro 24 ore.</p>
@@ -481,6 +541,7 @@
 		</div>
 	</footer>
 	<script src="./src/js/app.js"></script>
+	<script src="https://s.pageclip.co/v1/pageclip.js" charset="utf-8"></script>
 </body>
 
 </html>

@@ -201,27 +201,19 @@ if (form && submitBtn) {
             return;
         }
         submitBtn.disabled = true;
-        const data = {
-            nome: formData.get('nome'),
-            email: formData.get('email'),
-            tipoProgetto: formData.get('tipo-progetto'),
-            messaggio: formData.get('messaggio')
-        };
+        const params = new URLSearchParams(formData);
         try {
             const response = await fetch(PAGECLIP_URL, {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "X-REQ-METHOD": "form-v1"
-                },
-                body: JSON.stringify(data)
+                body: params
             });
             if (response.ok) {
                 form.reset();
                 showToast("Messaggio inviato con successo!", "success");
             }
         } catch (error) {
-            throw new Error("Errore durante l'invio del modulo: " + error.message);
+            showToast("Errore di connessione. Riprova più tardi.", "error");
+            throw new Error("Errore invio: " + error.message);
         } finally {
             submitBtn.disabled = false;
         }

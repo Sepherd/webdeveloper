@@ -180,42 +180,66 @@ function hideToast() {
 // Pageclip Form Submission Handling
 const form = document.getElementById('form-contact');
 const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
-const PAGECLIP_URL = "https://send.pageclip.co/4UlRtxpQf2xCHlJ1Vy6ZAgDSoYa1bkst/contatti";
 
 if (form && submitBtn) {
-    form.addEventListener('submit', async function (e) {
-        e.preventDefault();
+    function validateForm() {
+
         if (!form.checkValidity()) {
-            e.stopPropagation();
             form.reportValidity();
-            return;
+            return false;
         }
+
         const formData = new FormData(form);
-        const messaggio = formData.get('messaggio');
-        if (messaggio.trim().length < 10) {
-            showToast("Il messaggio è troppo breve. Scrivi almeno 10 caratteri.", "error");
-            return;
-        }
-        if (formData.get('_gotcha')) {
+
+        // Honeypot
+        if (formData.get("_gotcha")) {
             console.log("Spam intercettato");
-            return;
+            return false;
         }
-        submitBtn.disabled = true;
-        const params = new URLSearchParams(formData);
-        try {
-            const response = await fetch(PAGECLIP_URL, {
-                method: "POST",
-                body: params
-            });
-            if (response.ok) {
-                form.reset();
-                showToast("Messaggio inviato con successo!", "success");
-            }
-        } catch (error) {
-            showToast("Errore di connessione. Riprova più tardi.", "error");
-            throw new Error("Errore invio: " + error.message);
-        } finally {
-            submitBtn.disabled = false;
+
+        const messaggio = (formData.get("messaggio") || "").trim();
+
+        if (messaggio.length < 10) {
+            showToast("Il messaggio è troppo breve. Scrivi almeno 10 caratteri.", "error");
+            return false;
+        }
+
+        return true;
+    }
+
+    // -------------------------
+    // BLOCCO SUBMIT SE INVALIDO
+    // -------------------------
+    form.addEventListener("submit", function (e) {
+        if (!validateForm()) {
+            e.preventDefault();
+            e.stopPropagation();
         }
     });
+
+    // -------------------------
+    // INTEGRAZIONE PAGECLIP
+    // -------------------------
+    Pageclip.form(".pageclip-form", {
+
+        onSubmit: function () {
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Invio in corso...";
+        },
+
+        onResponse: function (error, response) {
+
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Invia Messaggio";
+
+            if (!error) {
+                form.reset();
+                showToast("Messaggio inviato con successo!", "success");
+            } else {
+                showToast("Errore durante l'invio. Riprova più tardi.", "error");
+                console.error(error);
+            }
+        }
+    });
+
 }

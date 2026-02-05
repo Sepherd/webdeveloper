@@ -150,3 +150,80 @@ if (projectSelect) {
         }
     });
 }
+
+// Toast Notification
+const toast = document.getElementById('toast');
+const toastIcon = document.getElementById('toast-icon');
+const toastMessage = document.getElementById('toast-message');
+let toastTimeout;
+
+function showToast(message, type = 'error') {
+    if (type === 'error') {
+        toast.className = "fixed top-6 left-1/2 -translate-x-1/2 z-[60] flex items-center gap-3 px-6 py-3 rounded-full shadow-focus transition-all duration-500 ease-out transform bg-red-100 text-red-800 border border-red-200";
+        toastIcon.innerHTML = `<svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>`;
+    } else {
+        // Successo / Info
+        toast.className = "fixed top-6 left-1/2 -translate-x-1/2 z-[60] flex items-center gap-3 px-6 py-3 rounded-full shadow-focus transition-all duration-500 ease-out transform bg-accent-light text-text border border-accent";
+        toastIcon.innerHTML = `<svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+    }
+    toastMessage.textContent = message;
+    toast.classList.remove('-translate-y-[150%]', 'opacity-0', 'pointer-events-none');
+    clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(() => {
+        hideToast();
+    }, 4000);
+}
+function hideToast() {
+    toast.classList.add('-translate-y-[150%]', 'opacity-0', 'pointer-events-none');
+}
+
+// Pageclip Form Submission Handling
+const form = document.getElementById('form-contact');
+const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
+const PAGECLIP_URL = "https://send.pageclip.co/4UlRtxpQf2xCHlJ1Vy6ZAgDSoYa1bkst/contatti";
+
+if (form && submitBtn) {
+    form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        if (!form.checkValidity()) {
+            e.stopPropagation();
+            form.reportValidity();
+            return;
+        }
+        const formData = new FormData(form);
+        const messaggio = formData.get('messaggio');
+        if (messaggio.trim().length < 10) {
+            showToast("Il messaggio è troppo breve. Scrivi almeno 10 caratteri.", "error");
+            return;
+        }
+        if (formData.get('_gotcha')) {
+            console.log("Spam intercettato");
+            return;
+        }
+        submitBtn.disabled = true;
+        const data = {
+            nome: formData.get('nome'),
+            email: formData.get('email'),
+            tipoProgetto: formData.get('tipo-progetto'),
+            messaggio: formData.get('messaggio')
+        };
+        try {
+            const response = await fetch(PAGECLIP_URL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-REQ-METHOD": "form-v1"
+                },
+                body: JSON.stringify(data)
+            });
+            if (response.ok) {
+                form.reset();
+                showToast("Messaggio inviato con successo!", "success");
+            }
+        } catch (error) {
+            throw new Error("Errore durante l'invio del modulo: " + error.message);
+        } finally {
+            submitBtn.disabled = false;
+        }
+    });
+}

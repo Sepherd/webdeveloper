@@ -450,9 +450,8 @@
 						dopo dettaglio.
 					</p>
 				</div>
-				<div id="form-contact" class="w-full max-w-4xl">
-					<form action="https://send.pageclip.co/4UlRtxpQf2xCHlJ1Vy6ZAgDSoYa1bkst/contatti" class="pageclip-form"
-						method="post">
+				<div class="w-full max-w-4xl">
+					<form id="form-contact" action="" class="pageclip-form" method="">
 						<div id="form-container"
 							class="bg-bg-dark grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-8 p-4 rounded">
 							<div class="flex flex-col gap-4" id="info">
@@ -487,6 +486,8 @@
 										class="bg-bg border border-border text-text px-4 py-2 focus:outline-none focus:border-accent rounded"
 										placeholder="Raccontami il tuo progetto..."></textarea>
 								</div>
+								<input type="text" name="_gotcha" style="display:none !important" tabindex="-1"
+									autocomplete="off">
 								<div class="flex gap-2 items-center justify-end py-2 w-full">
 									<input type="checkbox" id="privacy" name="privacy" required class="accent-accent">
 									<label for="privacy" class="text-xs text-text-lighter leading-tight">
@@ -540,6 +541,11 @@
 			</p>
 		</div>
 	</footer>
+	<div id="toast"
+		class="fixed top-6 left-1/2 -translate-x-1/2 z-60 flex items-center gap-3 px-6 py-3 rounded-full shadow-focus transition-all duration-500 ease-out transform -translate-y-[150%] opacity-0 pointer-events-none">
+		<div id="toast-icon"></div>
+		<span id="toast-message" class="font-medium text-sm whitespace-nowrap"></span>
+	</div>
 	<script src="./src/js/app.js"></script>
 	<script src="https://s.pageclip.co/v1/pageclip.js" charset="utf-8"></script>
 </body>

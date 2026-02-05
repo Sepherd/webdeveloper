@@ -498,9 +498,7 @@
 									<button type="submit" id="submit-btn"
 										class="group relative bg-accent text-white font-semibold py-2 px-4 w-full md:max-w-1/2 rounded-xl hover:bg-accent-hover transition duration-300 shadow-soft disabled:opacity-70 disabled:cursor-not-allowed">
 										<span id="btn-text">Invia Messaggio</span>
-
-										<svg id="btn-spinner"
-											class="hidden animate-spin ml-2 size-5 text-white"
+										<svg id="btn-spinner" class="hidden animate-spin ml-2 size-5 text-white"
 											viewBox="0 0 24 24" fill="none">
 											<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
 												stroke-width="4"></circle>
@@ -515,27 +513,39 @@
 					</form>
 				</div>
 				<div class="flex flex-row flex-nowrap items-center justify-between w-full max-w-4xl px-4">
-					<hr class="border-t border-dashed border-accent w-1/2 mr-2 mt-1">
-					<span id="oppure" class="text-text-lighter text-sm">oppure</span>
-					<hr class="border-t border-dashed border-accent w-1/2 ml-2 mt-1">
+					<hr class="w-1/2 mr-2 mt-1">
+					<span id="oppure" class="text-text-lighter text-base">oppure</span>
+					<hr class="w-1/2 ml-2 mt-1">
 				</div>
 				<div class="flex flex-col md:flex-row md:flex-wrap gap-4 items-center justify-center">
-					<a href="https://wa.me/393512345678" target="_blank" rel="noopener noreferrer"
-						class="inline-flex items-center gap-2 px-6 py-3 text-lg border-primary text-accent font-semibold transition hover:border-accent-hover hover:text-accent-hover hover:translate-y-[-1px] hover:shadow-hover cta-active duration-300 ease-[cubic-bezier(.25,.8,.25,1)]"
-						aria-label="Contattami su WhatsApp">
-						Contattami su WhatsApp
-						<svg class="size-5 shrink-0">
-							<use href="./src/svg/icons.svg#wa"></use>
-						</svg>
-					</a>
-					<a href="mailto:dev@dev.dev"
-						class="bg-accent-light inline-flex items-center gap-2 cursor-pointer px-4 py-2.5 border-full text-white hover:bg-accent hover:shadow-hover transition duration-300 ease-[cubic-bezier(.25,.8,.25,1)]"
-						aria-label="Contattami via email">
-						Contattami via email
-						<svg class="size-5 shrink-0">
-							<use href="./src/svg/icons.svg#email"></use>
-						</svg>
-					</a>
+					<div class="flex flex-col md:flex-row gap-4 items-center justify-center">
+						<a href="https://wa.me/393512345678" target="_blank" rel="noopener noreferrer"
+							class="inline-flex items-center gap-2 px-6 py-3 text-lg border-primary text-accent font-semibold transition hover:border-accent-hover hover:text-accent-hover hover:translate-y-[-1px] hover:shadow-hover cta-active duration-300 ease-[cubic-bezier(.25,.8,.25,1)]"
+							aria-label="Contattami su WhatsApp">
+							Contattami su WhatsApp
+							<svg class="size-5 shrink-0">
+								<use href="./src/svg/icons.svg#wa"></use>
+							</svg>
+						</a>
+						<a href="https://t.me/ar_dev" target="_blank" rel="noopener noreferrer"
+							class="inline-flex items-center gap-2 px-6 py-3 text-lg border-mirror text-accent font-semibold transition hover:border-accent-hover hover:text-accent-hover hover:translate-y-[-1px] hover:shadow-hover cta-active duration-300 ease-[cubic-bezier(.25,.8,.25,1)]"
+							aria-label="Contattami su Telegram">
+							Contattami su Telegram
+							<svg class="size-5 shrink-0">
+								<use href="./src/svg/icons.svg#tg"></use>
+							</svg>
+						</a>
+					</div>
+					<div class="w-full flex items-center justify-center">
+						<a href="mailto:dev@dev.dev"
+							class="bg-accent-light inline-flex items-center gap-2 cursor-pointer px-4 py-2.5 border-full text-white hover:bg-accent hover:shadow-hover transition duration-300 ease-[cubic-bezier(.25,.8,.25,1)]"
+							aria-label="Contattami via email">
+							Contattami via email
+							<svg class="size-5 shrink-0">
+								<use href="./src/svg/icons.svg#email"></use>
+							</svg>
+						</a>
+					</div>
 					<p class="text-text-lighter text-sm md:w-full text-center">Rispondo solitamente entro 24 ore.</p>
 				</div>
 			</div>

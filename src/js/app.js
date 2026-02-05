@@ -231,3 +231,16 @@ if (form && submitBtn) {
         }
     });
 }
+
+// Email fallback
+const emailLink = document.querySelector('a[href^="mailto:"]');
+const email = emailLink.getAttribute('href').split(':')[1];
+if (emailLink) {
+    emailLink.addEventListener('click', () => {
+        navigator.clipboard.writeText(email).then(() => {
+            showToast("Indirizzo email copiato negli appunti!", "success");
+        }).catch(() => {
+            showToast("Non è stato possibile copiare l'indirizzo email.", "error");
+        });
+    });
+}

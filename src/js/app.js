@@ -180,55 +180,48 @@ function hideToast() {
 // Pageclip Form Submission Handling
 const form = document.getElementById('form-contact');
 const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
-
-function validateForm() {
-
-    if (!form.checkValidity()) {
-        form.reportValidity();
-        return false;
-    }
-
-    const formData = new FormData(form);
-
-    // Honeypot
-    if (formData.get("_gotcha")) {
-        console.log("Spam intercettato");
-        return false;
-    }
-
-    const messaggio = (formData.get("messaggio") || "").trim();
-
-    if (messaggio.length < 10) {
-        showToast("Il messaggio è troppo breve. Scrivi almeno 10 caratteri.", "error");
-        return false;
-    }
-
-    return true;
-}
+const FORMSPREE_URL = "https://formspree.io/f/mpqjajvy";
 if (form && submitBtn) {
-    validateForm();
-    form.addEventListener("submit", function (e) {
-        if (!validateForm()) {
-            e.preventDefault();
+    form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        if (!form.checkValidity()) {
             e.stopPropagation();
+            form.reportValidity();
+            return;
         }
-    });
-    Pageclip.form(".pageclip-form", {
-        onSubmit: function () {
-            submitBtn.disabled = true;
-            submitBtn.textContent = "Invio in corso...";
-        },
-        onResponse: function (error, response) {
-            submitBtn.disabled = false;
-            submitBtn.textContent = "Invia Messaggio";
-            if (!error) {
+        const formData = new FormData(form);
+        const messaggio = formData.get('messaggio');
+        if (messaggio.trim().length < 10) {
+            showToast("Il messaggio è troppo breve. Scrivi almeno 10 caratteri.", "error");
+            return;
+        }
+        if (formData.get('_gotcha')) {
+            console.log("Spam intercettato");
+            return;
+        }
+        submitBtn.disabled = true;
+        const data = {
+            nome: formData.get('nome'),
+            email: formData.get('email'),
+            tipoProgetto: formData.get('tipo-progetto'),
+            messaggio: formData.get('messaggio')
+        };
+        try {
+            const response = await fetch(FORMSPREE_URL, {
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+            if (response.ok) {
                 form.reset();
                 showToast("Messaggio inviato con successo!", "success");
-            } else {
-                showToast("Errore durante l'invio. Riprova più tardi.", "error");
-                console.error(error);
             }
+        } catch (error) {
+            throw new Error("Errore durante l'invio del modulo: " + error.message);
+        } finally {
+            submitBtn.disabled = false;
         }
     });
-
 }

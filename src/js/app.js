@@ -206,6 +206,7 @@ function validateForm() {
     return true;
 }
 if (form && submitBtn) {
+    validateForm();
     form.addEventListener("submit", function (e) {
         if (!validateForm()) {
             e.preventDefault();

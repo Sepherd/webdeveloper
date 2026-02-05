@@ -181,57 +181,45 @@ function hideToast() {
 const form = document.getElementById('form-contact');
 const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
 
-if (form && submitBtn) {
-    function validateForm() {
+function validateForm() {
 
-        if (!form.checkValidity()) {
-            form.reportValidity();
-            return false;
-        }
-
-        const formData = new FormData(form);
-
-        // Honeypot
-        if (formData.get("_gotcha")) {
-            console.log("Spam intercettato");
-            return false;
-        }
-
-        const messaggio = (formData.get("messaggio") || "").trim();
-
-        if (messaggio.length < 10) {
-            showToast("Il messaggio è troppo breve. Scrivi almeno 10 caratteri.", "error");
-            return false;
-        }
-
-        return true;
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        return false;
     }
 
-    // -------------------------
-    // BLOCCO SUBMIT SE INVALIDO
-    // -------------------------
+    const formData = new FormData(form);
+
+    // Honeypot
+    if (formData.get("_gotcha")) {
+        console.log("Spam intercettato");
+        return false;
+    }
+
+    const messaggio = (formData.get("messaggio") || "").trim();
+
+    if (messaggio.length < 10) {
+        showToast("Il messaggio è troppo breve. Scrivi almeno 10 caratteri.", "error");
+        return false;
+    }
+
+    return true;
+}
+if (form && submitBtn) {
     form.addEventListener("submit", function (e) {
         if (!validateForm()) {
             e.preventDefault();
             e.stopPropagation();
         }
     });
-
-    // -------------------------
-    // INTEGRAZIONE PAGECLIP
-    // -------------------------
     Pageclip.form(".pageclip-form", {
-
         onSubmit: function () {
             submitBtn.disabled = true;
             submitBtn.textContent = "Invio in corso...";
         },
-
         onResponse: function (error, response) {
-
             submitBtn.disabled = false;
             submitBtn.textContent = "Invia Messaggio";
-
             if (!error) {
                 form.reset();
                 showToast("Messaggio inviato con successo!", "success");

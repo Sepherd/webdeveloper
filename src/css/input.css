@@ -69,7 +69,7 @@
     }
 
     .border-mirror {
-        @apply border-2 border-dashed border-accent rounded-tl-xl rounded-br-xl rounded-tr-md rounded-bl-md;
+        @apply md:rounded-tl-xl md:rounded-br-xl md:rounded-tr-md md:rounded-bl-md;
     }
 
     .border-full {

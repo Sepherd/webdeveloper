@@ -177,10 +177,11 @@ function hideToast() {
     toast.classList.add('-translate-y-[150%]', 'opacity-0', 'pointer-events-none');
 }
 
-// Pageclip Form Submission Handling
+// Form Submission Handling
 const form = document.getElementById('form-contact');
 const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
-const FORMSPREE_URL = "https://formspree.io/f/mpqjajvy";
+// const FORMSPREE_URL = "https://formspree.io/f/mpqjajvy";
+const FORMSPREE_URL = "http://localhost:8000/api/contact.php";
 const btnText = document.getElementById('btn-text');
 const btnSpinner = document.getElementById('btn-spinner');
 
@@ -207,19 +208,25 @@ if (form && submitBtn) {
             nome: formData.get('nome'),
             email: formData.get('email'),
             tipoProgetto: formData.get('tipo-progetto'),
-            messaggio: formData.get('messaggio')
+            messaggio: formData.get('messaggio'),
+            csrf_token: formData.get('csrf_token')
         };
         const waitPromise = new Promise(resolve => setTimeout(resolve, 2000));
         const fetchPromise = fetch(FORMSPREE_URL, {
             method: "POST",
             headers: { 'Accept': 'application/json' },
-            body: JSON.stringify(data)
+            body: JSON.stringify(data),
+            credentials: 'same-origin'
         });
         try {
             const [timerResponse, fetchResponse] = await Promise.all([waitPromise, fetchPromise]);
             if (fetchResponse.ok) {
                 form.reset();
                 showToast("Messaggio inviato con successo!", "success");
+            } else {
+                const errorData = await fetchResponse.json();
+                const errorMessage = errorData.error || "Si è verificato un errore sconosciuto.";
+                showToast("Errore: " + errorMessage, "error");
             }
         } catch (error) {
             throw new Error("Errore durante l'invio del modulo: " + error.message);
@@ -229,6 +236,7 @@ if (form && submitBtn) {
             btnSpinner.classList.remove('inline-block');
             btnSpinner.classList.add('hidden');
         }
+        await refreshCsrfToken();
     });
 }
 
@@ -243,4 +251,25 @@ if (emailLink) {
             showToast("Non è stato possibile copiare l'indirizzo email.", "error");
         });
     });
+}
+
+// CSRF Token
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const response = await fetch('../api/csrf-token.php', {
+            credentials: 'same-origin'
+        });
+        const data = await response.json();
+        document.getElementById('csrf_token').value = data.csrf_token;
+    } catch (error) {
+        console.error('Errore caricamento token CSRF:', error);
+    }
+});
+
+async function refreshCsrfToken() {
+    const response = await fetch('../api/csrf-token.php', {
+        credentials: 'same-origin'
+    });
+    const data = await response.json();
+    document.getElementById('csrf_token').value = data.csrf_token;
 }

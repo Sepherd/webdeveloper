@@ -13,6 +13,10 @@
 		content="Realizzo siti web e soluzioni digitali su misura per professionisti e piccole attività. Un approccio chiaro, collaborativo e orientato alle persone." />
 	<meta property="og:url" content="https://tuodominio.it/" />
 	<meta property="og:image" content="https://tuodominio.it/og-image.jpg" />
+	<link rel="apple-touch-icon" sizes="180x180" href="./src/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="./src/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./src/favicon/favicon-16x16.png">
+	<link rel="manifest" href="./src/favicon/site.webmanifest">
 	<link rel="canonical" href="https://tuodominio.it/" />
 	<link href="./src/css/output.css" rel="stylesheet">
 	<title>Siti Web e Soluzioni Digitali su Misura | Andrea Recce</title>
@@ -451,23 +455,26 @@
 				</div>
 				<div class="w-full max-w-4xl">
 					<form id="form-contact" action="" method="">
+						<input type="hidden" name="csrf_token" id="csrf_token">
 						<div id="form-container"
 							class="bg-bg-dark grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-8 p-4 rounded">
 							<div class="flex flex-col gap-4" id="info">
 								<div class="flex flex-col gap-2">
 									<label for="nome" class="font-semibold text-text-light">Nome</label>
-									<input type="text" id="nome" name="nome" placeholder="Come ti chiami?" autocomplete="name" required
+									<input type="text" id="nome" name="nome" placeholder="Come ti chiami?"
+										autocomplete="name" required
 										class="bg-bg border border-border text-text px-4 py-2 rounded focus:outline-none focus:border-accent transition" />
 								</div>
 								<div class="flex flex-col gap-2">
 									<label for="email" class="font-semibold text-text-light">Email</label>
-									<input type="email" id="email" name="email" inputmode="email" placeholder="La tua email" autocomplete="email" required
+									<input type="email" id="email" name="email" inputmode="email"
+										placeholder="La tua email" autocomplete="email" required
 										class="bg-bg border border-border text-text px-4 py-2 rounded focus:outline-none focus:border-accent transition" />
 								</div>
 								<div class="flex flex-col gap-2">
 									<label for="tipo-progetto" class="font-semibold text-text-light">Tipo di
 										progetto</label>
-									<select name="tipo-progetto" id="tipo-progetto" name="tipo-progetto"
+									<select name="tipo-progetto" id="tipo-progetto"
 										class="bg-bg border border-border text-text-lighter px-4 py-2 rounded focus:outline-none focus:border-accent cursor-pointer transition">
 										<option value="">Seleziona (facoltativo)</option>
 										<option>Nuovo sito web</option>
@@ -481,7 +488,8 @@
 							<div id="messaggio-submit" class="flex flex-col items-start gap-4">
 								<div class="flex flex-col gap-2 w-full">
 									<label for="messaggio" class="font-semibold text-text-light">Messaggio</label>
-									<textarea id="messaggio" name="messaggio" rows="5" minlength="10" maxlength="3000" required
+									<textarea id="messaggio" name="messaggio" rows="5" minlength="10" maxlength="3000"
+										required
 										class="bg-bg border border-border text-text px-4 py-2 focus:outline-none focus:border-accent rounded"
 										placeholder="Raccontami il tuo progetto..."></textarea>
 								</div>

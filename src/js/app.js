@@ -162,7 +162,6 @@ function showToast(message, type = 'error') {
         toast.className = "fixed top-6 left-1/2 -translate-x-1/2 z-[60] flex items-center gap-3 px-6 py-3 rounded-full shadow-focus transition-all duration-500 ease-out transform bg-red-100 text-red-800 border border-red-200";
         toastIcon.innerHTML = `<svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>`;
     } else {
-        // Successo / Info
         toast.className = "fixed top-6 left-1/2 -translate-x-1/2 z-[60] flex items-center gap-3 px-6 py-3 rounded-full shadow-focus transition-all duration-500 ease-out transform bg-accent-light text-text border border-accent";
         toastIcon.innerHTML = `<svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
     }
@@ -180,8 +179,8 @@ function hideToast() {
 // Form Submission Handling
 const form = document.getElementById('form-contact');
 const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
-// const FORMSPREE_URL = "https://formspree.io/f/mpqjajvy";
-const FORMSPREE_URL = "http://localhost:8000/api/contact.php";
+const FORMSPREE_URL = "https://formspree.io/f/mpqjajvy";
+// const FORMSPREE_URL = "http://localhost:8000/api/contact.php";
 const btnText = document.getElementById('btn-text');
 const btnSpinner = document.getElementById('btn-spinner');
 

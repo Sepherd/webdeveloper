@@ -37,20 +37,20 @@ if (!$nome || !$email || !$messaggio) {
     exit(json_encode(["error" => "Campi obbligatori mancanti"]));
 }
 
-if (strlen($nome) > 100 || strlen($email) > 255 || strlen($messaggio) > 5000) {
-    http_response_code(400);
-    exit(json_encode(["error" => "Dati troppo lunghi"]));
-}
-
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     http_response_code(400);
     exit(json_encode(["error" => "Email non valida"]));
 }
-
 $messaggio = htmlspecialchars($messaggio, ENT_QUOTES, 'UTF-8');
-if (mb_strlen($messaggio) < 10) {
+$nome = htmlspecialchars($nome, ENT_QUOTES, 'UTF-8');
+$email = htmlspecialchars($email, ENT_QUOTES, 'UTF-8');
+if (strlen($nome) > 100 || strlen($email) > 254 || strlen($messaggio) > 5000) {
     http_response_code(400);
-    exit(json_encode(["error" => "Messaggio troppo breve"]));
+    exit(json_encode(["error" => "Dati troppo lunghi"]));
+}
+if (strlen($nome) < 2 || strlen($email) < 5 || mb_strlen($messaggio) < 10) {
+    http_response_code(400);
+    exit(json_encode(["error" => "Dati troppo brevi"]));
 }
 
 $botToken = $config['telegram']['bot_token'];

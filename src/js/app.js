@@ -179,8 +179,8 @@ function hideToast() {
 // Form Submission Handling
 const form = document.getElementById('form-contact');
 const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
-const FORMSPREE_URL = "https://formspree.io/f/mpqjajvy";
-// const FORMSPREE_URL = "http://localhost:8000/api/contact.php";
+// const FORMSPREE_URL = "https://formspree.io/f/mpqjajvy";
+const FORMSPREE_URL = "http://localhost:8000/api/contact.php";
 const btnText = document.getElementById('btn-text');
 const btnSpinner = document.getElementById('btn-spinner');
 
@@ -192,24 +192,51 @@ if (form && submitBtn) {
             form.reportValidity();
             return;
         }
-        submitBtn.disabled = true;
-        btnText.textContent = "Invio in corso...";
-        btnSpinner.classList.remove('hidden');
-        btnSpinner.classList.add('inline-block');
         const formData = new FormData(form);
+        const nome = formData.get('nome');
+        const email = formData.get('email');
+        const tipoProgetto = formData.get('tipo-progetto');
         const messaggio = formData.get('messaggio');
+        if (!nome || !email || !messaggio) {
+            showToast("Per favore, compila tutti i campi obbligatori.", "error");
+            return;
+        }
+        if (nome.trim().length < 2) {
+            showToast("Il nome è troppo breve. Scrivi almeno 2 caratteri.", "error");
+            return;
+        }
+        if (email.trim().length < 5) {
+            showToast("L'email sembra troppo breve. Controlla di averla inserita correttamente.", "error");
+            return;
+        }
         if (messaggio.trim().length < 10) {
             showToast("Il messaggio è troppo breve. Scrivi almeno 10 caratteri.", "error");
             return;
         }
+        if (nome.length > 100) {
+            showToast("Il nome è troppo lungo. Massimo 100 caratteri.", "error");
+            return;
+        }
+        if (email.length > 254) {
+            showToast("L'email è troppo lunga. Massimo 254 caratteri.", "error");
+            return;
+        }
+        if (messaggio.length > 5000) {
+            showToast("Il messaggio è troppo lungo. Massimo 5000 caratteri.", "error");
+            return;
+        }
         if (formData.get('_gotcha')) return;
         const data = {
-            nome: formData.get('nome'),
-            email: formData.get('email'),
-            tipoProgetto: formData.get('tipo-progetto'),
-            messaggio: formData.get('messaggio'),
+            nome: nome,
+            email: email,
+            tipoProgetto: tipoProgetto,
+            messaggio: messaggio,
             csrf_token: formData.get('csrf_token')
         };
+        submitBtn.disabled = true;
+        btnText.textContent = "Invio in corso...";
+        btnSpinner.classList.remove('hidden');
+        btnSpinner.classList.add('inline-block');
         const waitPromise = new Promise(resolve => setTimeout(resolve, 2000));
         const fetchPromise = fetch(FORMSPREE_URL, {
             method: "POST",
@@ -228,6 +255,7 @@ if (form && submitBtn) {
                 showToast("Errore: " + errorMessage, "error");
             }
         } catch (error) {
+            showToast("Errore durante l'invio del modulo: " + error.message, "error");
             throw new Error("Errore durante l'invio del modulo: " + error.message);
         } finally {
             submitBtn.disabled = false;

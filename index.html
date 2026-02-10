@@ -283,7 +283,7 @@
 						class="flex flex-col gap-4 md:gap-8 max-w-xl items-end py-4 px-6 border-r-2 border-accent border-dashed">
 						<h3
 							class="text-2xl font-semibold underline decoration-accent-light decoration-dashed decoration-2 underline-offset-6">
-							<span class="text-accent text-3xl">02</span> To-Do List Web App
+							<span class="text-accent text-3xl">02</span> Gestione Preventivi
 						</h3>
 						<div class="flex gap-3 items-center justify-start text-text-lighter text-xs md:text-sm">
 							<div class="bg-bg-dark px-2 py-1 rounded">HTML</div>
@@ -295,7 +295,7 @@
 							Applicazione per la gestione di attività quotidiane,
 							pensata per essere veloce, minimale e accessibile.
 						</p>
-						<a
+						<a href="project/demo-preventivi/index.php" target="_blank" rel="noopener noreferrer"
 							class="mt-4 cursor-pointer group inline-flex items-center gap-2 text-accent font-medium hover:text-accent-hover transition duration-300 ease-[cubic-bezier(.25,.8,.25,1)]">
 							Vai al progetto
 							<svg class="size-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24">
@@ -462,13 +462,14 @@
 								<div class="flex flex-col gap-2">
 									<label for="nome" class="font-semibold text-text-light">Nome</label>
 									<input type="text" id="nome" name="nome" placeholder="Come ti chiami?"
-										autocomplete="name" required
+										autocomplete="name" required minlength="2" maxlength="100"
 										class="bg-bg border border-border text-text px-4 py-2 rounded focus:outline-none focus:border-accent transition" />
 								</div>
 								<div class="flex flex-col gap-2">
 									<label for="email" class="font-semibold text-text-light">Email</label>
 									<input type="email" id="email" name="email" inputmode="email"
-										placeholder="La tua email" autocomplete="email" required
+										placeholder="La tua email" autocomplete="email" required minlength="5"
+										maxlength="254"
 										class="bg-bg border border-border text-text px-4 py-2 rounded focus:outline-none focus:border-accent transition" />
 								</div>
 								<div class="flex flex-col gap-2">
@@ -488,7 +489,7 @@
 							<div id="messaggio-submit" class="flex flex-col items-start gap-4">
 								<div class="flex flex-col gap-2 w-full">
 									<label for="messaggio" class="font-semibold text-text-light">Messaggio</label>
-									<textarea id="messaggio" name="messaggio" rows="5" minlength="10" maxlength="3000"
+									<textarea id="messaggio" name="messaggio" rows="5" minlength="10" maxlength="5000"
 										required
 										class="bg-bg border border-border text-text px-4 py-2 focus:outline-none focus:border-accent rounded"
 										placeholder="Raccontami il tuo progetto..."></textarea>

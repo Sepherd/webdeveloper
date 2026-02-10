@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@source "../../../project/demo-preventivi/**/*.{php,html,js}";
+
+@theme {
+  --color-50: '#f0f9ff';
+  --color-100: '#e0f2fe';
+  --color-500: '#0ea5e9';
+  --color-600: '#0284c7';
+  --color-700: '#0369a1';
+}

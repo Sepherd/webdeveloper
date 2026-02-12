@@ -1,0 +1,40 @@
+<?php
+
+return $accounts = [
+    [
+        "name" => "Pixel Perfect Agency",
+        "id" => 0,
+        "slogan" => "Soluzioni Digitali Avanzate",
+        "vat" => "IT12345678901",
+        "address" => "Via dell'Innovazione 42, Milano",
+        "email" => "info@pixelperfect.demo",
+        "phone" => "+39 02 1234567",
+        "description" => "Servizi digitali, marketing, hosting",
+        "icon" => "./src/svg/icons.svg#agenzia",
+        "theme" => "agenzia",
+    ],
+    [
+        "name" => "Edilizia Solida SRL",
+        "id" => 1,
+        "slogan" => "Costruiamo il tuo futuro",
+        "vat" => "IT98765432109",
+        "address" => "Viale dei Mattoni 88, Roma",
+        "email" => "cantieri@ediliziasolida.demo",
+        "phone" => "+39 06 9876543",
+        "description" => "Lavori, materiali, manodopera",
+        "icon" => "./src/svg/icons.svg#edile",
+        "theme" => "edile",
+    ],
+    [
+        "name" => "Giulia V. Consulting",
+        "id" => 2,
+        "slogan" => "Strategie di Marketing",
+        "vat" => "IT11223344556",
+        "address" => "Piazza della Libertà 1, Torino",
+        "email" => "giulia@consulting.demo",
+        "phone" => "+39 333 1234567",
+        "description" => "Consulenze, progetti, tariffe orarie",
+        "icon" => "./src/svg/icons.svg#consulente",
+        "theme" => "consulente",
+    ],
+];

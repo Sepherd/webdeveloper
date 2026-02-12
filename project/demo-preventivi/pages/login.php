@@ -1,4 +1,10 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+require_once __DIR__ . '/../app/routing.php';
+
+$accounts = require __DIR__ . '/../app/accounts.php';
 $features = [
     "Preventivi illimitati",
     "Gestione clienti CRM",
@@ -23,10 +29,12 @@ $features = [
 
                 <ul class="space-y-4">
                     <?php foreach ($features as $feature): ?>
-                    <li class="flex items-center space-x-3">
-                        <!-- <CheckCircle2 class="w-5 h-5 text-indigo-400" /> -->
-                        <span class="text-indigo-100"><?php echo $feature; ?></span>
-                    </li>
+                        <li class="flex items-center space-x-3">
+                            <svg class="size-5 shrink-0 text-indigo-400">
+                                <use href="./src/svg/icons.svg#circle-check"></use>
+                            </svg>
+                            <span class="text-indigo-100"><?php echo $feature; ?></span>
+                        </li>
                     <?php endforeach; ?>
                 </ul>
             </div>
@@ -41,38 +49,22 @@ $features = [
             <h3 class="text-xl font-bold text-gray-800 mb-6 text-center">Scegli una Demo</h3>
             <p class="text-gray-500 text-center mb-8 text-sm">Seleziona un profilo per vedere come la piattaforma si adatta a diversi settori.</p>
             <div class="space-y-4">
-                <button
-                    class="w-full cursor-pointer group flex items-center p-4 border border-gray-200 rounded-xl hover:border-indigo-500 hover:shadow-lg transition-all duration-300 bg-white hover:bg-indigo-50">
-                    <div class="bg-indigo-100 p-3 rounded-full text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
-                        <Building2 class="w-6 h-6" />
-                    </div>
-                    <div class="ml-4 text-left">
-                        <h4 class="font-bold text-gray-800">Agenzia Web</h4>
-                        <p class="text-xs text-gray-500">Servizi digitali, marketing, hosting</p>
-                    </div>
-                </button>
-                <button
-                    class="w-full cursor-pointer group flex items-center p-4 border border-gray-200 rounded-xl hover:border-orange-500 hover:shadow-lg transition-all duration-300 bg-white hover:bg-orange-50">
-                    <div class="bg-orange-100 p-3 rounded-full text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-colors">
-                        <Hammer class="w-6 h-6" />
-                    </div>
-                    <div class="ml-4 text-left">
-                        <h4 class="font-bold text-gray-800">Impresa Edile</h4>
-                        <p class="text-xs text-gray-500">Lavori, materiali, manodopera</p>
-                    </div>
-                </button>
-
-                <button
-                    class="w-full cursor-pointer group flex items-center p-4 border border-gray-200 rounded-xl hover:border-emerald-500 hover:shadow-lg transition-all duration-300 bg-white hover:bg-emerald-50">
-                    <div class="bg-emerald-100 p-3 rounded-full text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-colors">
-                        <Briefcase class="w-6 h-6" />
-                    </div>
-                    <div class="ml-4 text-left">
-                        <h4 class="font-bold text-gray-800">Consulente Freelance</h4>
-                        <p class="text-xs text-gray-500">Consulenze orarie, prestazioni</p>
-                    </div>
-                </button>
+                <?php foreach ($accounts as $account): ?>
+                    <button data-theme="<?php echo $account['theme'] ?? 'default'; ?>"
+                        class="login-btn w-full cursor-pointer group flex items-center p-4 border border-gray-200 rounded-xl hover:border-primary-500 hover:shadow-lg transition-all bg-white hover:bg-primary-50 duration-300" data-account="<?php echo strtolower(str_replace(' ', '-', $account['name'])); ?>">
+                        <div class="bg-primary-100 p-3 rounded-full text-primary-600 group-hover:bg-primary-600 transition-colors duration-300">
+                            <svg class="size-6 shrink-0 text-primary-500 group-hover:text-white duration-300">
+                                <use href="<?php echo $account['icon']; ?>"></use>
+                            </svg>
+                        </div>
+                        <div class="ml-4 text-left">
+                            <h4 class="font-bold text-gray-800"><?php echo $account['name']; ?></h4>
+                            <p class="text-xs text-gray-500"><?php echo $account['description']; ?></p>
+                        </div>
+                    </button>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
 </div>
+<script src="./src/js/login.js"></script>

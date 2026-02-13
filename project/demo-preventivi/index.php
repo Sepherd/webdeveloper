@@ -1,19 +1,8 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-} else {
-    $_SESSION = [];
-    session_destroy();
-    session_start();
-}
+require_once __DIR__ . '/app/helpers.php';
 require_once __DIR__ . '/app/routing.php';
+sessionChecker();
 
-if (!isset($_SESSION['account']) && $_GET['page'] !== 'login') {
-    header('Location: index.php?page=login');
-    exit;
-}
-
-$account = $_SESSION['account'] ?? null;
 $page = $_GET['page'] ?? 'login';
 
 ?>

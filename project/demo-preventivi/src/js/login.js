@@ -14,6 +14,7 @@ loginButtons.forEach(button => {
             });
             const result = await response.json();
             if (result.success) {
+                console.log(result.message);
                 window.location.href = 'http://localhost:8000/project/demo-preventivi/index.php?page=dashboard';
             }
         } catch (error) {

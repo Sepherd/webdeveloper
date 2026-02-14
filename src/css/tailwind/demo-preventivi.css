@@ -9,9 +9,15 @@
   --color-primary-700: var(--color-primary-700);
   --color-background: var(--color-slate-100);
   --color-card: var(--color-slate-50);
+  --color-card-dark: var(--color-slate-200);
   --color-card-foreground: var(--color-slate-700);
   --color-card-border: var(--color-slate-300);
   --color-emissione: var(--color-blue-500);
+  --color-attesa: var(--color-orange-500);
+  --color-accettati: var(--color-green-500);
+  --color-fatturato: var(--color-purple-500);
+  --color-rifiutati: var(--color-red-500);
+  --color-bozze: var(--color-yellow-500);
 }
 
 @layer base {

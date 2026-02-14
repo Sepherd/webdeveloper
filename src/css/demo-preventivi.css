@@ -9,11 +9,14 @@
       "Courier New", monospace;
     --color-red-100: oklch(93.6% 0.032 17.717);
     --color-red-200: oklch(88.5% 0.062 18.334);
+    --color-red-500: oklch(63.7% 0.237 25.331);
     --color-red-800: oklch(44.4% 0.177 26.899);
     --color-orange-50: oklch(98% 0.016 73.684);
     --color-orange-100: oklch(95.4% 0.038 75.164);
     --color-orange-500: oklch(70.5% 0.213 47.604);
     --color-orange-600: oklch(64.6% 0.222 41.116);
+    --color-yellow-500: oklch(79.5% 0.184 86.047);
+    --color-green-500: oklch(72.3% 0.219 149.579);
     --color-emerald-50: oklch(97.9% 0.021 166.113);
     --color-emerald-100: oklch(95% 0.052 163.051);
     --color-emerald-500: oklch(69.6% 0.17 162.48);
@@ -27,6 +30,7 @@
     --color-indigo-500: oklch(58.5% 0.233 277.117);
     --color-indigo-600: oklch(51.1% 0.262 276.966);
     --color-indigo-900: oklch(35.9% 0.144 278.697);
+    --color-purple-500: oklch(62.7% 0.265 303.9);
     --color-slate-50: oklch(98.4% 0.003 247.858);
     --color-slate-100: oklch(96.8% 0.007 247.896);
     --color-slate-200: oklch(92.9% 0.013 255.508);
@@ -94,9 +98,15 @@
     --color-primary-700: var(--color-primary-700);
     --color-background: var(--color-slate-100);
     --color-card: var(--color-slate-50);
+    --color-card-dark: var(--color-slate-200);
     --color-card-foreground: var(--color-slate-700);
     --color-card-border: var(--color-slate-300);
     --color-emissione: var(--color-blue-500);
+    --color-attesa: var(--color-orange-500);
+    --color-accettati: var(--color-green-500);
+    --color-fatturato: var(--color-purple-500);
+    --color-rifiutati: var(--color-red-500);
+    --color-bozze: var(--color-yellow-500);
   }
 }
 @layer base {
@@ -741,6 +751,24 @@
   .border-transparent {
     border-color: transparent;
   }
+  .bg-accettati {
+    background-color: var(--color-accettati);
+  }
+  .bg-accettati\/10 {
+    background-color: color-mix(in srgb, oklch(72.3% 0.219 149.579) 10%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-accettati) 10%, transparent);
+    }
+  }
+  .bg-attesa {
+    background-color: var(--color-attesa);
+  }
+  .bg-attesa\/10 {
+    background-color: color-mix(in srgb, oklch(70.5% 0.213 47.604) 10%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-attesa) 10%, transparent);
+    }
+  }
   .bg-background {
     background-color: var(--color-background);
   }
@@ -753,8 +781,20 @@
       background-color: color-mix(in oklab, var(--color-black) 20%, transparent);
     }
   }
+  .bg-bozze {
+    background-color: var(--color-bozze);
+  }
+  .bg-bozze\/10 {
+    background-color: color-mix(in srgb, oklch(79.5% 0.184 86.047) 10%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-bozze) 10%, transparent);
+    }
+  }
   .bg-card {
     background-color: var(--color-card);
+  }
+  .bg-card-dark {
+    background-color: var(--color-card-dark);
   }
   .bg-emissione {
     background-color: var(--color-emissione);
@@ -763,6 +803,15 @@
     background-color: color-mix(in srgb, oklch(62.3% 0.214 259.815) 10%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-emissione) 10%, transparent);
+    }
+  }
+  .bg-fatturato {
+    background-color: var(--color-fatturato);
+  }
+  .bg-fatturato\/10 {
+    background-color: color-mix(in srgb, oklch(62.7% 0.265 303.9) 10%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-fatturato) 10%, transparent);
     }
   }
   .bg-indigo-900 {
@@ -779,6 +828,24 @@
   }
   .bg-red-100 {
     background-color: var(--color-red-100);
+  }
+  .bg-rifiutati {
+    background-color: var(--color-rifiutati);
+  }
+  .bg-rifiutati\/10 {
+    background-color: color-mix(in srgb, oklch(63.7% 0.237 25.331) 10%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-rifiutati) 10%, transparent);
+    }
+  }
+  .bg-slate-500 {
+    background-color: var(--color-slate-500);
+  }
+  .bg-slate-500\/10 {
+    background-color: color-mix(in srgb, oklch(55.4% 0.046 257.417) 10%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-slate-500) 10%, transparent);
+    }
   }
   .bg-white {
     background-color: var(--color-white);
@@ -956,11 +1023,29 @@
   .whitespace-nowrap {
     white-space: nowrap;
   }
+  .text-accettati {
+    color: var(--color-accettati);
+  }
+  .text-attesa {
+    color: var(--color-attesa);
+  }
+  .text-bozze {
+    color: var(--color-bozze);
+  }
   .text-card-foreground {
     color: var(--color-card-foreground);
   }
+  .text-card-foreground\/70 {
+    color: color-mix(in srgb, oklch(37.2% 0.044 257.287) 70%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      color: color-mix(in oklab, var(--color-card-foreground) 70%, transparent);
+    }
+  }
   .text-emissione {
     color: var(--color-emissione);
+  }
+  .text-fatturato {
+    color: var(--color-fatturato);
   }
   .text-gray-500 {
     color: var(--color-gray-500);
@@ -991,6 +1076,9 @@
   }
   .text-red-800 {
     color: var(--color-red-800);
+  }
+  .text-rifiutati {
+    color: var(--color-rifiutati);
   }
   .text-slate-100 {
     color: var(--color-slate-100);
@@ -1181,6 +1269,16 @@
     &:hover {
       @media (hover: hover) {
         border-color: var(--color-primary-500);
+      }
+    }
+  }
+  .hover\:bg-card-dark\/80 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: color-mix(in srgb, oklch(92.9% 0.013 255.508) 80%, transparent);
+        @supports (color: color-mix(in lab, red, red)) {
+          background-color: color-mix(in oklab, var(--color-card-dark) 80%, transparent);
+        }
       }
     }
   }

@@ -104,8 +104,8 @@ $theme = $account['theme'] ?? '';
                         <div class="p-6">
                             <div class="flex items-center justify-between">
                                 <div>
-                                    <p class="text-sm text-muted-foreground">Preventivi Emessi</p>
-                                    <p class="text-3xl font-bold text-foreground mt-1"><?= count($quotes); ?></p>
+                                    <p class="text-sm">Totale Preventivi</p>
+                                    <p id="total-quotes" class="text-3xl font-bold mt-1"></p>
                                 </div>
                                 <div class="p-3 rounded-xl bg-emissione/10 text-emissione">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text w-6 h-6 text-primary">
@@ -123,17 +123,17 @@ $theme = $account['theme'] ?? '';
                         <div class="p-6">
                             <div class="flex items-center justify-between">
                                 <div>
-                                    <p class="text-sm text-muted-foreground">In Attesa</p>
-                                    <p class="text-3xl font-bold text-foreground mt-1">2</p>
+                                    <p class="text-sm">In Attesa</p>
+                                    <p id="total-pending" class="text-3xl font-bold mt-1"></p>
                                 </div>
-                                <div class="p-3 rounded-xl bg-warning/10"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock w-6 h-6 text-warning">
+                                <div class="p-3 rounded-xl bg-attesa/10"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock w-6 h-6 text-attesa">
                                         <circle cx="12" cy="12" r="10"></circle>
                                         <polyline points="12 6 12 12 16 14"></polyline>
                                     </svg></div>
                             </div>
                             <div class="flex gap-2 mt-3">
-                                <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 text-xs">1 bozze</div>
-                                <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80 text-xs">1 inviati</div>
+                                <div id="drafts" class="inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-card-dark text-card-foreground/70 hover:bg-card-dark/80 text-xs"></div>
+                                <div id="sent" class="inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-card-dark text-card-foreground/70 hover:bg-card-dark/80 text-xs"></div>
                             </div>
                         </div>
                     </div>
@@ -142,24 +142,26 @@ $theme = $account['theme'] ?? '';
                             <div class="flex items-center justify-between">
                                 <div>
                                     <p class="text-sm text-muted-foreground">Accettati</p>
-                                    <p class="text-3xl font-bold text-foreground mt-1">1</p>
+                                    <p id="total-accepted" class="text-3xl font-bold text-foreground mt-1"></p>
                                 </div>
-                                <div class="p-3 rounded-xl bg-success/10"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check w-6 h-6 text-success">
+                                <div class="p-3 rounded-xl bg-accettati/10">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check w-6 h-6 text-accettati">
                                         <circle cx="12" cy="12" r="10"></circle>
                                         <path d="m9 12 2 2 4-4"></path>
-                                    </svg></div>
+                                    </svg>
+                                </div>
                             </div>
-                            <p class="text-xs text-muted-foreground mt-3">33% tasso di accettazione</p>
+                            <p id="acceptance-rate" class="text-xs text-muted-foreground mt-3"></p>
                         </div>
                     </div>
                     <div class="rounded-lg border border-card-border bg-card text-card-foreground shadow-sm">
                         <div class="p-6">
                             <div class="flex items-center justify-between">
                                 <div>
-                                    <p class="text-sm text-muted-foreground">Fatturato Accettato</p>
-                                    <p class="text-2xl font-bold text-foreground mt-1">8120,32&nbsp;€</p>
+                                    <p class="text-sm">Fatturato Accettato</p>
+                                    <p id="fatturato" class="text-2xl font-bold text-foreground mt-1">8120,32&nbsp;€</p>
                                 </div>
-                                <div class="p-3 rounded-xl bg-accent/10"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trending-up w-6 h-6 text-accent">
+                                <div class="p-3 rounded-xl bg-fatturato/10"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trending-up w-6 h-6 text-fatturato">
                                         <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
                                         <polyline points="16 7 22 7 22 13"></polyline>
                                     </svg></div>
@@ -172,109 +174,67 @@ $theme = $account['theme'] ?? '';
                         <div>
                             <h3 class="text-2xl font-semibold leading-none tracking-tight">Preventivi Recenti</h3>
                             <p class="text-sm text-muted-foreground">Ultimi preventivi aggiornati</p>
-                        </div><a href="/dashboard/quotes"><button class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 gap-1">Vedi tutti<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right w-4 h-4">
+                        </div>
+                        <a href="/dashboard/quotes">
+                            <button class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 gap-1">
+                                Vedi tutti
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right w-4 h-4">
                                     <path d="M5 12h14"></path>
                                     <path d="m12 5 7 7-7 7"></path>
-                                </svg></button></a>
+                                </svg>
+                            </button>
+                        </a>
                     </div>
                     <div class="p-6 pt-0">
-                        <div class="space-y-3"><a class="flex items-center gap-4 p-3 rounded-lg hover:bg-muted/50 transition-colors" href="/dashboard/quotes/quote-wa-3">
-                                <div class="p-2 rounded-lg bg-muted text-muted-foreground"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock w-4 h-4">
-                                        <circle cx="12" cy="12" r="10"></circle>
-                                        <polyline points="12 6 12 12 16 14"></polyline>
-                                    </svg></div>
-                                <div class="flex-1 min-w-0">
-                                    <div class="flex items-center gap-2">
-                                        <p class="font-medium text-foreground truncate">PRV-2024-003</p>
-                                        <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-xs bg-muted text-muted-foreground">Bozza</div>
-                                    </div>
-                                    <p class="text-sm text-muted-foreground truncate">Studio Legale Bianchi</p>
-                                </div>
-                                <div class="text-right">
-                                    <p class="font-medium text-foreground">3050,00&nbsp;€</p>
-                                    <p class="text-xs text-muted-foreground">15/03/2024</p>
-                                </div>
-                            </a><a class="flex items-center gap-4 p-3 rounded-lg hover:bg-muted/50 transition-colors" href="/dashboard/quotes/quote-wa-2">
-                                <div class="p-2 rounded-lg bg-primary/10 text-primary"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send w-4 h-4">
-                                        <path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path>
-                                        <path d="m21.854 2.147-10.94 10.939"></path>
-                                    </svg></div>
-                                <div class="flex-1 min-w-0">
-                                    <div class="flex items-center gap-2">
-                                        <p class="font-medium text-foreground truncate">PRV-2024-002</p>
-                                        <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-xs bg-primary/10 text-primary">Inviato</div>
-                                    </div>
-                                    <p class="text-sm text-muted-foreground truncate">Ristorante Da Luigi</p>
-                                </div>
-                                <div class="text-right">
-                                    <p class="font-medium text-foreground">6710,00&nbsp;€</p>
-                                    <p class="text-xs text-muted-foreground">10/03/2024</p>
-                                </div>
-                            </a><a class="flex items-center gap-4 p-3 rounded-lg hover:bg-muted/50 transition-colors" href="/dashboard/quotes/quote-wa-1">
-                                <div class="p-2 rounded-lg bg-success/10 text-success"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check w-4 h-4">
-                                        <circle cx="12" cy="12" r="10"></circle>
-                                        <path d="m9 12 2 2 4-4"></path>
-                                    </svg></div>
-                                <div class="flex-1 min-w-0">
-                                    <div class="flex items-center gap-2">
-                                        <p class="font-medium text-foreground truncate">PRV-2024-001</p>
-                                        <div class="inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 text-xs bg-success/10 text-success">Accettato</div>
-                                    </div>
-                                    <p class="text-sm text-muted-foreground truncate">TechStart SRL</p>
-                                </div>
-                                <div class="text-right">
-                                    <p class="font-medium text-foreground">8120,32&nbsp;€</p>
-                                    <p class="text-xs text-muted-foreground">05/03/2024</p>
-                                </div>
-                            </a></div>
+                        <div id="recent-quotes" class="space-y-3">
+                        </div>
                     </div>
+                    <div class="grid gap-4 sm:grid-cols-3"><a href="/dashboard/quotes/new">
+                            <div class="rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-soft transition-shadow cursor-pointer h-full">
+                                <div class="p-6 flex items-center gap-4">
+                                    <div class="p-3 rounded-xl bg-primary/10"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus w-6 h-6 text-primary">
+                                            <path d="M5 12h14"></path>
+                                            <path d="M12 5v14"></path>
+                                        </svg></div>
+                                    <div>
+                                        <h3 class="font-medium text-foreground">Nuovo Preventivo</h3>
+                                        <p class="text-sm text-muted-foreground">Crea un preventivo</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a><a href="/dashboard/clients">
+                            <div class="rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-soft transition-shadow cursor-pointer h-full">
+                                <div class="p-6 flex items-center gap-4">
+                                    <div class="p-3 rounded-xl bg-accent/10"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text w-6 h-6 text-accent">
+                                            <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+                                            <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+                                            <path d="M10 9H8"></path>
+                                            <path d="M16 13H8"></path>
+                                            <path d="M16 17H8"></path>
+                                        </svg></div>
+                                    <div>
+                                        <h3 class="font-medium text-foreground">Gestisci Clienti</h3>
+                                        <p class="text-sm text-muted-foreground">Anagrafica clienti</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a><a href="/dashboard/services">
+                            <div class="rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-soft transition-shadow cursor-pointer h-full">
+                                <div class="p-6 flex items-center gap-4">
+                                    <div class="p-3 rounded-xl bg-success/10"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-euro w-6 h-6 text-success">
+                                            <path d="M4 10h12"></path>
+                                            <path d="M4 14h9"></path>
+                                            <path d="M19 6a7.7 7.7 0 0 0-5.2-2A7.9 7.9 0 0 0 6 12c0 4.4 3.5 8 7.8 8 2 0 3.8-.8 5.2-2"></path>
+                                        </svg></div>
+                                    <div>
+                                        <h3 class="font-medium text-foreground">Listino Prezzi</h3>
+                                        <p class="text-sm text-muted-foreground">Servizi e prodotti</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </a></div>
                 </div>
-                <div class="grid gap-4 sm:grid-cols-3"><a href="/dashboard/quotes/new">
-                        <div class="rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-soft transition-shadow cursor-pointer h-full">
-                            <div class="p-6 flex items-center gap-4">
-                                <div class="p-3 rounded-xl bg-primary/10"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-plus w-6 h-6 text-primary">
-                                        <path d="M5 12h14"></path>
-                                        <path d="M12 5v14"></path>
-                                    </svg></div>
-                                <div>
-                                    <h3 class="font-medium text-foreground">Nuovo Preventivo</h3>
-                                    <p class="text-sm text-muted-foreground">Crea un preventivo</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a><a href="/dashboard/clients">
-                        <div class="rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-soft transition-shadow cursor-pointer h-full">
-                            <div class="p-6 flex items-center gap-4">
-                                <div class="p-3 rounded-xl bg-accent/10"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text w-6 h-6 text-accent">
-                                        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
-                                        <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
-                                        <path d="M10 9H8"></path>
-                                        <path d="M16 13H8"></path>
-                                        <path d="M16 17H8"></path>
-                                    </svg></div>
-                                <div>
-                                    <h3 class="font-medium text-foreground">Gestisci Clienti</h3>
-                                    <p class="text-sm text-muted-foreground">Anagrafica clienti</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a><a href="/dashboard/services">
-                        <div class="rounded-lg border bg-card text-card-foreground shadow-sm hover:shadow-soft transition-shadow cursor-pointer h-full">
-                            <div class="p-6 flex items-center gap-4">
-                                <div class="p-3 rounded-xl bg-success/10"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-euro w-6 h-6 text-success">
-                                        <path d="M4 10h12"></path>
-                                        <path d="M4 14h9"></path>
-                                        <path d="M19 6a7.7 7.7 0 0 0-5.2-2A7.9 7.9 0 0 0 6 12c0 4.4 3.5 8 7.8 8 2 0 3.8-.8 5.2-2"></path>
-                                    </svg></div>
-                                <div>
-                                    <h3 class="font-medium text-foreground">Listino Prezzi</h3>
-                                    <p class="text-sm text-muted-foreground">Servizi e prodotti</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a></div>
-            </div>
         </main>
     </div>
-
 </div>
+<script src="./src/js/dashboard.js"></script>
